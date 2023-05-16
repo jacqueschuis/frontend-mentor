@@ -1,14 +1,18 @@
 * {
     font-family: 'Poppins', sans-serif;
-    background-color: hsl(0, 0%, 86%);
+}
+
+body {
+    background-color: hsl(0, 0%, 94%);
 }
 
 .widgetContainer {
-    background: fixed hsl(0, 0%, 94%);
+    background-color:  hsl(0, 0%, 100%);
     width: 500px;
-    height: 500px;
-    display: flex;
-    flex-direction: column;
+    height: 450px;
+    position: relative;
+    border-radius: 20px 20px 200px 20px;
+    padding: 20px 35px;
 }
 
 .inputsContainer {
@@ -16,7 +20,9 @@
     text-transform: uppercase;
     display: flex;
     color: hsl(0, 1%, 44%);
-    border-bottom: 1px solid hsl(0, 0%, 94%);
+    padding: 0 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid hsl(0, 0%, 94%);
 }
 
 .inputContainer {
@@ -31,8 +37,9 @@ input {
     padding: 5px;
     font-size: 32px;
     margin-top: 0;
-    border: 1px solid hsl(0, 0%, 86%);
+    border: 1px solid hsl(0, 0%, 94%);
     border-radius: 10px;
+    background-color: none;
     color: hsl(0, 0%, 8%);
     transition: .15s;
     outline: none;
@@ -40,10 +47,10 @@ input {
 
 input::placeholder {
     color: hsl(0, 1%, 44%);
+    padding: 10px
 }
 
 input:active,
-input::selection,
 input:focus {
     border: 1px solid hsl(259, 100%, 65%) !important;
     cursor: pointer;
@@ -75,6 +82,8 @@ input:focus {
     border: none;
     padding: 15px;
     transition: .15s;
+    position: absolute;
+    right: 0;
 }
 
 .result {
@@ -85,7 +94,15 @@ input:focus {
 background-color: hsl(0, 0%, 8%);
 }
 
+.submitBtn:active svg {
+background-color: hsl(0, 0%, 8%);
+}
+
 svg {
     background-color: hsl(259, 100%, 65%);
     transition: .15s;
+}
+
+.show {
+    display: inline-block
 }
