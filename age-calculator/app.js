@@ -3,37 +3,55 @@ const dayInput = document.querySelector('#dayInput');
 const monthInput = document.querySelector('#monthInput');
 const yearInput = document.querySelector('#yearInput');
 const submit = document.querySelector('.submitBtn');
+const allInputs = document.querySelectorAll('.input')
 
 // result selection
 const resultYear = document.querySelector('#resultYear');
 const resultMonth = document.querySelector('#resultMonth');
 const resultDay = document.querySelector('#resultDay');
 
-function calculateAge (birthDate, today) {
-    birthDate = new Date(birthDate);
+function calculateAge () {
+    // collect data from inputs
+    const day = parseInt(dayInput.value);
+    const month = parseInt(monthInput.value);
+    const year = parseInt(yearInput.value);
 
-    let years = (today.getFullYear() - birthDate.getFullYear());
-    let months = ((today.getMonth() - birthDate.getMonth()))
+    // current date
+    const today = new Date()
 
-    if (today.getMonth() < birthDate.getMonth() || 
-        today.getMonth() == birthDate.getMonth() && today.getDate() < birthDate.getDate()) {
-        years--;
-    }
+    // birth date
+    const birthday = new Date(year, (month-1), day);
 
-    return {years, months};
+    // calculation
+    const ageInMiliseconds = today.getTime() - birthday.getTime();
+    const age = new Date(ageInMiliseconds);
+    const resYears = age.getFullYear() - 1970;
+    const resMonths = age.getMonth();
+    const resDays = age.getDate() - 1;
+
+    return {resYears, resMonths, resDays};
+}
+
+function setAge (res) {
+    resultYear.innerHTML = res.resYears;
+    resultMonth.innerHTML = res.resMonths;
+    resultDay.innerHTML = res.resDays;
 }
 
 
 
 submit.addEventListener('click', () => {
-    const day = dayInput.value;
-    const month = monthInput.value;
-    const year = yearInput.value;
-    const birthday = new Date(year, (month-1), day);
-    const today = new Date()
-    const res = calculateAge(birthday,today);
+    const res = calculateAge();
+    setAge(res);
+    
+})
 
-    resultYear.innerHTML = res.years
-    resultMonth.innerHTML = res.months
-    console.log(res)
+allInputs.forEach((item) => {
+    item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            const res = calculateAge()
+            return setAge(res);
+        }
+        return
+    })
 })
