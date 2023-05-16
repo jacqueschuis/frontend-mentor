@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <main class="widgetContainer">
+        <div class="inputsContainer">
+            <div class="inputContainer" id="dayContainer">
+                <p class="subheading">Day</p>
+                <input type="text" id="dayInput" placeholder="DD">
+                <div class="errorContainer">
+                    <p class="errorInvalid">Must be a valid day</p>
+                    <p class="errorEmpty">This field is required</p>
+                    <p class="errorForm">Must be a valid date</p>
+                </div>
+            </div>
+            <div class="inputContainer" id="monthContainer">
+                <p class="subheading">Month</p>
+                <input type="text" id="monthInput" placeholder="MM">
+                <div class="errorContainer">
+                    <p class="errorInvalid">Must be a valid month</p>
+                    <p class="errorEmpty">This field is required</p>
+                </div>
+            </div>
+            <div class="inputContainer" id="monthContainer">
+                <p class="subheading">Year</p>
+                <input type="text" id="yearInput" placeholder="YYYY">
+                <div class="errorContainer">
+                    <p class="errorInvalid">Must be a valid year</p>
+                    <p class="errorEmpty">This field is required</p>
+                </div>
+            </div>
+        </div>
+        <button class="submitBtn"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 46 44"><g fill="none" stroke="#FFF" stroke-width="2"><path d="M1 22.019C8.333 21.686 23 25.616 23 44M23 44V0M45 22.019C37.667 21.686 23 25.616 23 44"/></g></svg></button>
+        <div class="resultContainer">
+            <p class="heading"><span class="result">--</span>years</p>
+            <p class="heading"><span class="result">--</span>months</p>
+            <p class="heading"><span class="result">--</span>days</p>
+        </div>
+    </main>
+
+    <script src="./app.js"></script>
+</body>
+</html>

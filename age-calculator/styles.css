@@ -1,0 +1,91 @@
+* {
+    font-family: 'Poppins', sans-serif;
+    background-color: hsl(0, 0%, 86%);
+}
+
+.widgetContainer {
+    background: fixed hsl(0, 0%, 94%);
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.inputsContainer {
+    font-size: 12px;
+    text-transform: uppercase;
+    display: flex;
+    color: hsl(0, 1%, 44%);
+    border-bottom: 1px solid hsl(0, 0%, 94%);
+}
+
+.inputContainer {
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+input { 
+    width: 100px;
+    height: 50px;
+    padding: 5px;
+    font-size: 32px;
+    margin-top: 0;
+    border: 1px solid hsl(0, 0%, 86%);
+    border-radius: 10px;
+    color: hsl(0, 0%, 8%);
+    transition: .15s;
+    outline: none;
+}
+
+input::placeholder {
+    color: hsl(0, 1%, 44%);
+}
+
+input:active,
+input::selection,
+input:focus {
+    border: 1px solid hsl(259, 100%, 65%) !important;
+    cursor: pointer;
+}
+
+.resultContainer {
+    font-weight: 700;
+    font-style: italic;
+    font-size: 5em;
+    line-height: .125em;
+    color: hsl(0, 0%, 8%);
+    background-color: none;
+}
+
+.result {
+    color: hsl(259, 100%, 65%);
+}
+
+.errorContainer {
+    font-weight: 400;
+    font-style: italic;
+    color: hsl(0, 100%, 67%);
+    display: none
+}
+
+.submitBtn {
+    background-color: hsl(259, 100%, 65%);
+    border-radius: 100%;
+    border: none;
+    padding: 15px;
+    transition: .15s;
+}
+
+.result {
+    margin-right: 5px
+}
+
+.submitBtn:active {
+background-color: hsl(0, 0%, 8%);
+}
+
+svg {
+    background-color: hsl(259, 100%, 65%);
+    transition: .15s;
+}
