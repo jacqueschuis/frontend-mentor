@@ -1,108 +1,122 @@
 * {
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-    background-color: hsl(0, 0%, 94%);
+  background-color: hsl(0, 0%, 94%);
 }
 
 .widgetContainer {
-    background-color:  hsl(0, 0%, 100%);
-    width: 500px;
-    height: 450px;
-    position: relative;
-    border-radius: 20px 20px 200px 20px;
-    padding: 20px 35px;
+  background-color: hsl(0, 0%, 100%);
+  width: 500px;
+  height: 450px;
+  position: absolute;
+  border-radius: 20px 20px 200px 20px;
+  padding: 20px 35px;
+  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.container {
+  position: relative;
+}
+
+.subheading {
+  text-transform: uppercase;
 }
 
 .inputsContainer {
-    font-size: 12px;
-    text-transform: uppercase;
-    display: flex;
-    color: hsl(0, 1%, 44%);
-    padding: 0 10px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid hsl(0, 0%, 94%);
+  font-size: 12px;
+  display: flex;
+  color: hsl(0, 1%, 44%);
+  padding: 0 10px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid hsl(0, 0%, 94%);
 }
 
 .inputContainer {
-    margin: 0 10px;
-    display: flex;
-    flex-direction: column;
+  margin: 0 10px;
+  display: flex;
+  flex-direction: column;
 }
 
-input { 
-    width: 100px;
-    height: 50px;
-    padding: 5px;
-    font-size: 32px;
-    margin-top: 0;
-    border: 1px solid hsl(0, 0%, 94%);
-    border-radius: 10px;
-    background-color: none;
-    color: hsl(0, 0%, 8%);
-    transition: .15s;
-    outline: none;
+input {
+  width: 100px;
+  height: 50px;
+  padding: 5px;
+  font-size: 32px;
+  margin-top: 0;
+  border: 1px solid hsl(0, 0%, 94%);
+  border-radius: 10px;
+  background-color: none;
+  color: hsl(0, 0%, 8%);
+  transition: 0.15s;
+  outline: none;
 }
 
 input::placeholder {
-    color: hsl(0, 1%, 44%);
-    padding: 10px
+  color: hsl(0, 1%, 44%);
+  padding: 10px;
 }
 
 input:active,
 input:focus {
-    border: 1px solid hsl(259, 100%, 65%) !important;
-    cursor: pointer;
+  border: 1px solid hsl(259, 100%, 65%) !important;
+  cursor: pointer;
 }
 
 .resultContainer {
-    font-weight: 700;
-    font-style: italic;
-    font-size: 5em;
-    line-height: .125em;
-    color: hsl(0, 0%, 8%);
-    background-color: none;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 5em;
+  line-height: 0.125em;
+  color: hsl(0, 0%, 8%);
+  background-color: none;
 }
 
 .result {
-    color: hsl(259, 100%, 65%);
+  color: hsl(259, 100%, 65%);
 }
 
-.errorContainer {
-    font-weight: 400;
-    font-style: italic;
-    color: hsl(0, 100%, 67%);
-    display: none
+.errorContainer,
+.errorForm,
+.errorInvalid,
+.errorEmpty {
+  font-weight: 400;
+  font-style: italic;
+  color: hsl(0, 100%, 67%);
+  display: none;
 }
 
 .submitBtn {
-    background-color: hsl(259, 100%, 65%);
-    border-radius: 100%;
-    border: none;
-    padding: 15px;
-    transition: .15s;
-    position: absolute;
-    right: 0;
+  background-color: hsl(259, 100%, 65%);
+  border-radius: 100%;
+  border: none;
+  padding: 15px;
+  transition: 0.15s;
+  position: absolute;
+  right: 0;
 }
 
 .result {
-    margin-right: 5px
+  margin-right: 5px;
 }
 
 .submitBtn:active {
-background-color: hsl(0, 0%, 8%);
+  background-color: hsl(0, 0%, 8%);
 }
 
 .submitBtn:active svg {
-background-color: hsl(0, 0%, 8%);
+  background-color: hsl(0, 0%, 8%);
 }
 
 svg {
-    background-color: hsl(259, 100%, 65%);
-    transition: .15s;
+  background-color: hsl(259, 100%, 65%);
+  transition: 0.15s;
 }
 
 .show {
-    display: inline-block
+  display: inline-block;
 }
