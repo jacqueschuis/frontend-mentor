@@ -8,19 +8,22 @@ body {
 
 .widgetContainer {
   background-color: hsl(0, 0%, 100%);
-  width: 500px;
-  height: 450px;
+  width: calc(350px + (500 - 350) * ((100vw - 375px) / (1440 - 375)));
+  height: auto;
   position: absolute;
-  border-radius: 20px 20px 200px 20px;
+  border-radius: 5% 5% 30% 5%;
   padding: 20px 35px;
   margin: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  display: flex;
 }
 
 .container {
   position: relative;
+  height: 100%;
+  width: 100%;
 }
 
 .subheading {
@@ -29,15 +32,18 @@ body {
 
 .inputsContainer {
   font-size: 12px;
+  width: 100%;
   display: flex;
+  width: auto;
   color: hsl(0, 1%, 44%);
-  padding: 0 10px;
   margin-bottom: 20px;
   border-bottom: 2px solid hsl(0, 0%, 94%);
+  position: relative;
 }
 
 .inputContainer {
   margin: 0 10px;
+  margin-bottom: 2.5em;
   display: flex;
   flex-direction: column;
 }
@@ -67,13 +73,20 @@ input:focus {
   cursor: pointer;
 }
 
+.heading {
+  font-size: calc(60px + (80 - 60) * ((100vw - 375px) / (1440 - 375)));
+}
+
 .resultContainer {
+  height: fit-content;
+  width: fit-content;
   font-weight: 700;
   font-style: italic;
-  font-size: 5em;
   line-height: 0.125em;
   color: hsl(0, 0%, 8%);
   background-color: none;
+  margin-top: 0;
+  margin-bottom: .25em;
 }
 
 .result {
@@ -88,16 +101,21 @@ input:focus {
   font-style: italic;
   color: hsl(0, 100%, 67%);
   display: none;
+  margin-top: .5em;
+  margin-bottom: 0;
 }
 
 .submitBtn {
   background-color: hsl(259, 100%, 65%);
   border-radius: 100%;
   border: none;
-  padding: 15px;
+  padding: 20px;
   transition: 0.15s;
   position: absolute;
   right: 0;
+  bottom: -25%;
+  height: 35px;
+  width: 35px;
 }
 
 .result {
@@ -108,15 +126,27 @@ input:focus {
   background-color: hsl(0, 0%, 8%);
 }
 
-.submitBtn:active svg {
-  background-color: hsl(0, 0%, 8%);
-}
-
-svg {
-  background-color: hsl(259, 100%, 65%);
-  transition: 0.15s;
-}
 
 .show {
   display: inline-block;
+}
+
+@media screen and (max-width: 500px){
+  .inputsContainer{
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+
+  .resultContainer {
+    padding-top: 30px;
+  }
+
+  .inputContainer {
+    flex: 1 1 33%;
+  }
+
+  .submitBtn{
+    right: auto;
+  }
+  
 }

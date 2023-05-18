@@ -70,10 +70,10 @@ function setNoError() {
     err.style.display = "none";
   }
   for (let input of inputArray) {
-    input.style.border = "1px solid hsl(0, 0%, 94%)";
+    input.style.border = "hsl(0, 1%, 44%)";
   }
   for (let subheading of subheadings) {
-    subheading.style.color = "hsl(0, 0%, 8%)";
+    subheading.style.color = "hsl(0, 1%, 44%)";
   }
 }
 
@@ -81,6 +81,39 @@ function setAge(res) {
   resultYear.innerHTML = res.resYears;
   resultMonth.innerHTML = res.resMonths;
   resultDay.innerHTML = res.resDays;
+}
+
+function validateForm() {
+  const day = dayInput.value;
+  const month = monthInput.value;
+  const year = yearInput.value;
+  
+
+  let errors = [];
+  if (!day) {errors.push('day-empty');}
+  if (! month) {errors.push('month-empty')}
+  if (!year) {errors.push('year-empty')}
+  if (!errors.includes('day-empty') && day > 31 || day < 0) {errors.push('day-invalid')}
+  if (!errors.includes('month-empty') && month > 12 || month < 0) {errors.push('month-invalid')}
+  if (!errors.includes('day-empty') && day.toString().length !== 2 && (!(errors.includes('day-invalid')))) {
+    errors.push('day-invalid');
+  }
+  if (!errors.includes('month-empty') && month.toString().length !== 2 && (!(errors.includes('month-invalid')))) {
+    errors.push('month-invalid')
+  }
+  if (!errors.includes('year-empty') && year.toString().length !== 4 && (!(errors.includes('year-invalid')))) {
+    errors.push('year-invalid')
+  }
+  if (!errors.includes('day-empty') && isNaN(day) && (!(errors.includes('day-invalid')))){
+    errors.push('day-invalid');
+  }
+  if (!errors.includes('month-empty') && isNaN(month) && (!(errors.includes('month-invalid')))){
+    errors.push('month-invalid');
+  }
+  if (!errors.includes('year-empty') && isNaN(year) && (!(errors.includes('year-invalid')))){
+    errors.push('year-invalid')
+  }
+ return errors
 }
 
 function handleErrors() {
@@ -93,6 +126,9 @@ function handleErrors() {
     resultMonth.innerHTML = "--";
     resultDay.innerHTML = "--";
   }
+
+  const errors = validateForm();
+  console.log(errors);
 
   if (!day && !month && !year) {
     dayErrorContainer.style.display = "block";
