@@ -48,7 +48,7 @@ body {
 }
 
 input {
-  width: calc(80px + (125 - 80) * ((100vw - 375px) / (1440 - 375)));;
+  width: calc(70px + (125 - 70) * ((100vw - 375px) / (1440 - 375)));;
   height: 60px;
   font-size: calc(24px + (28 - 24) * ((100vw - 375px) / (1440 - 375)));
   border: 1px solid hsl(0, 0%, 94%);
