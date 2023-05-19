@@ -38,6 +38,8 @@ Users should be able to:
 ### Links
 
 - [Live Site](https://frontend-mentor-age-calculator-khaki.vercel.app/)
+- [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/responsive-age-calculator-with-form-validation-b7HEHYxn9X)
+- [Frontend Mentor Challenge](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q)
 
 ## My process
 
