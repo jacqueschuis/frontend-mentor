@@ -40,8 +40,8 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- [Live Site](frontend-mentor-css-illustration-5rl25rtxh-jacqueschuis.vercel.app)
+- [Add solution URL here](https://your-solution-url.com)
+- [Live Site](https://frontend-mentor-css-illustration.vercel.app/)
 
 ## My process
 
