@@ -1,4 +1,7 @@
-# frontend-mentor
+# Frontend Mentor Challenges
+
+## Table of Contents
+- [Age Calculator](#age-calculator)
 
 ## Age Calculator
 ![](./age-calculator/screenshot.PNG)
