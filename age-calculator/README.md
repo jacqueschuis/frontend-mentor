@@ -14,9 +14,7 @@ This is a solution to the [Age calculator app challenge on Frontend Mentor](http
   - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-- [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
 
 ## Overview
 
@@ -32,24 +30,14 @@ Users should be able to:
   - The year is in the future
   - The date is invalid e.g. 31/04/1991 (there are 30 days in April)
 - View the optimal layout for the interface depending on their device's screen size
-- See hover and focus states for all interactive elements on the page
-- **Bonus**: See the age numbers animate to their final number when the form is submitted
+- See focus states for all interactive elements on the page
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![](./screenshot.PNG)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
 - [Live Site](https://frontend-mentor-age-calculator-khaki.vercel.app/)
 
 ## My process
@@ -59,37 +47,53 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
-- [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+I have gotten very accustomed to using Bootstrap as an easy way of styling everything, so I used this challenge as an opportunity to flex my CSS abilities. I used flexbox and a lot of `calc()` to make things responsive, and I think it turned out very well:
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
 ```css
-.proud-of-this-css {
-  color: papayawhip;
+.widgetContainer {
+  width: calc(275px + (550 - 275) * ((100vw - 375px) / (1440 - 375)));
 }
 ```
+I also tried to pull the logic out of event handlers whenever possible and simplify different aspects into their own individual functions. I'm particularly happy with how I handled the validation:
+
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+function validateForm() {
+  const day = dayInput.value;
+  const month = monthInput.value;
+  const year = yearInput.value;
+  
+  let errors = [];
+  
+  if (!day) {errors.push('day-empty');}
+  if (! month) {errors.push('month-empty')}
+  if (!year) {errors.push('year-empty')}
+  if (!errors.includes('day-empty') && day > 31 || day < 0) {errors.push('day-invalid')}
+  if (!errors.includes('month-empty') && month > 12 || month < 0) {errors.push('month-invalid')}
+  if (!errors.includes('day-empty') && day.toString().length !== 2 && (!(errors.includes('day-invalid')))) {
+    errors.push('day-invalid');
+  }
+  if (!errors.includes('month-empty') && month.toString().length !== 2 && (!(errors.includes('month-invalid')))) {
+    errors.push('month-invalid')
+  }
+  if (!errors.includes('year-empty') && year.toString().length !== 4 && (!(errors.includes('year-invalid')))) {
+    errors.push('year-invalid')
+  }
+  if (!errors.includes('day-empty') && isNaN(day) && (!(errors.includes('day-invalid')))){
+    errors.push('day-invalid');
+  }
+  if (!errors.includes('month-empty') && isNaN(month) && (!(errors.includes('month-invalid')))){
+    errors.push('month-invalid');
+  }
+  if (!errors.includes('year-empty') && isNaN(year) && (!(errors.includes('year-invalid')))){
+    errors.push('year-invalid')
+  }
+ return errors
 }
 ```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
@@ -99,21 +103,13 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
+- [Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - This is a great overview of all the different flexbox properties.
 - [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
 
 **Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [Jacques Pariseau](https://www.your-site.com)
+- Frontend Mentor - [@jacqueschuis](https://www.frontendmentor.io/profile/jacqueschuis)
 
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**

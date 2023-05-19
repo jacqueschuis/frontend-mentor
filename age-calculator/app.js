@@ -88,8 +88,8 @@ function validateForm() {
   const month = monthInput.value;
   const year = yearInput.value;
   
-
   let errors = [];
+  
   if (!day) {errors.push('day-empty');}
   if (! month) {errors.push('month-empty')}
   if (!year) {errors.push('year-empty')}
