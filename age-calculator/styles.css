@@ -145,6 +145,7 @@ input:focus {
   .submitBtn{
     right: auto;
     width: 25px;
+    bottom: -20%;
   }
   
 }

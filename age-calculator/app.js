@@ -41,7 +41,7 @@ const allErrors = [
 
 // error styling information
 const errorRed = "hsl(0, 100%, 67%)";
-const errorBorder = `1px solid ${errorRed}`;
+const errorBorder = `2px solid ${errorRed}`;
 
 function calculateAge() {
   // collect data from inputs
@@ -70,7 +70,7 @@ function setNoError() {
     err.style.display = "none";
   }
   for (let input of inputArray) {
-    input.style.border = "hsl(0, 1%, 44%)";
+    input.style.borderColor = "hsl(0, 1%, 44%)";
   }
   for (let subheading of subheadings) {
     subheading.style.color = "hsl(0, 1%, 44%)";
@@ -116,10 +116,7 @@ function validateForm() {
  return errors
 }
 
-function handleErrors() {
-  const day = parseInt(dayInput.value);
-  const month = parseInt(monthInput.value);
-  const year = parseInt(yearInput.value);
+function handleErrors(errors) {
 
   function setResult() {
     resultYear.innerHTML = "--";
@@ -127,16 +124,10 @@ function handleErrors() {
     resultDay.innerHTML = "--";
   }
 
-  const errors = validateForm();
-  console.log(errors);
-
-  if (!day && !month && !year) {
+  if (errors.includes('day-empty') && errors.includes('month-empty') && errors.includes('year-empty')) {
+    setResult();
     dayErrorContainer.style.display = "block";
-    monthErrorContainer.style.display = "block";
-    yearErrorContainer.style.display = "block";
-    dayErrorEmpty.style.display = "block";
-    monthErrorEmpty.style.display = "block";
-    yearErrorEmpty.style.display = "block";
+    formError.style.display = 'block';
     dayInput.style.border = errorBorder;
     dayContainer.style.color = errorRed;
     monthInput.style.border = errorBorder;
@@ -146,45 +137,91 @@ function handleErrors() {
     for (let subheading of subheadings) {
       subheading.style.color = errorRed;
     }
-    setResult();
-    return true;
+  } else {
+    if (errors.includes('day-empty')){
+      setResult();
+      dayErrorContainer.style.display = "block";
+      dayErrorEmpty.style.display = "block";
+      dayInput.style.border = errorBorder;
+      dayContainer.style.color = errorRed;
+      for (let subheading of subheadings) {
+        subheading.style.color = errorRed;
+      }
+    }
+    if (errors.includes('month-empty')){
+      setResult();
+      monthErrorContainer.style.display = "block";
+      monthErrorEmpty.style.display = "block";
+      monthInput.style.border = errorBorder;
+      monthContainer.style.color = errorRed;
+      for (let subheading of subheadings) {
+        subheading.style.color = errorRed;
+      }
+    }
+    if (errors.includes('year-empty')){
+      setResult();
+      yearErrorContainer.style.display = "block";
+      yearErrorEmpty.style.display = "block";
+      yearInput.style.border = errorBorder;
+      yearContainer.style.color = errorRed;
+      for (let subheading of subheadings) {
+        subheading.style.color = errorRed;
+      }
+    }
   }
 
-  if (isNaN(year)) {
-    yearErrorContainer.style.display = "block";
-    yearErrorInvalid.style.display = "block";
+  if (errors.includes('day-invalid')){
     setResult();
-    return true;
-  }
-  if (day >= 32) {
-    console.log("day error");
     dayErrorContainer.style.display = "block";
     dayErrorInvalid.style.display = "block";
+    dayInput.style.border = errorBorder;
+    dayInput.value = '';
+    for (let subheading of subheadings) {
+      subheading.style.color = errorRed;
+    }
+  }
+  if (errors.includes('month-invalid')){
     setResult();
-    return true;
+    monthErrorContainer.style.display = "block";
+    monthErrorInvalid.style.display = "block";
+    monthInput.style.border = errorBorder;
+    monthInput.value = '';
+    for (let subheading of subheadings) {
+      subheading.style.color = errorRed;
+    }
+  }
+  if (errors.includes('year-invalid')){
+    setResult();
+    yearErrorContainer.style.display = "block";
+    yearErrorInvalid.style.display = "block";
+    yearInput.style.border = errorBorder;
+    yearInput.value = '';
+    for (let subheading of subheadings) {
+      subheading.style.color = errorRed;
+    }
   }
 }
 
 submit.addEventListener("click", () => {
   setNoError();
-  const hasErrors = handleErrors();
-  if (hasErrors === true) {
-    return;
+  const errors = validateForm();
+  if(errors.length){
+    return handleErrors(errors);
   }
   const res = calculateAge();
-  setAge(res);
+  return setAge(res);
 });
 
 allInputs.forEach((item) => {
   item.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       setNoError();
-      const hasErrors = handleErrors();
-      if (hasErrors === true) {
-        return;
-      }
-      const res = calculateAge();
-      return setAge(res);
+    const errors = validateForm();
+    if(errors.length){
+      return handleErrors(errors);
+    }
+    const res = calculateAge();
+    return setAge(res);
     }
     return;
   });
