@@ -1,11 +1,11 @@
 body {
     font-family: 'Rubik', sans-serif;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
-
 .flex-container {
+    flex-wrap: wrap;
     z-index: 1;
     display: flex;
     align-items: center;
@@ -22,17 +22,16 @@ body {
 /* background shapes */
 
 .background-shape {
-    min-width: 40vw;
-    width: 600px;
-    min-height: 87.5vh;
-    border-radius: 0 0 20vw 20vw;
+    width: 500px;
+    height: 700px;
+    border-radius: 0 0 250px 250px;
     z-index: 0;
 }
 
 .purple {
     background: linear-gradient(45deg, hsl(264, 100%, 61%), hsl(293, 100%, 63%));
     position: absolute;
-    transform: translate(-20%);
+    transform: translate(-35%);
 }
 
 .grey {
@@ -40,29 +39,30 @@ body {
     position: absolute;
     right: 0;
     bottom: 0;
-    transform: rotate(180deg) translate(-20%);
+    transform: rotate(180deg) translate(-30%);
 }
 
 /* phone  */
 
 .phone {
-    min-width: 17.36vw;
-    min-height: 63.75vh;
     padding: 10px;
     width: 250px;
-    height: 500px;
-    border-radius: 40px;
+    height: 506px;
+    border-radius: 30px;
     box-sizing: border-box;
     background-color: white;
     box-shadow: 10px 5px 25px hsl(240, 1%, 76%);
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
+
+/* phone screen */
 
 .camera-cutout {
     background-color: white;
-    width: 200px;
+    width: 130px;
     height: 30px;
     border-radius: 0 0 15px 15px;
     position: absolute;
@@ -70,15 +70,17 @@ body {
     z-index: 2;
 }
 
+/* phone header */
+
 .header {
     display: flex;
     background: linear-gradient(90deg, hsl(264, 100%, 61%), hsl(293, 100%, 63%));
-    height: 20%;
+    height: 75px !important;
     width: 100%;
-    border-radius: 30px 30px 10px 10px;
+    border-radius: 25px 25px 5px 5px;
     align-items: flex-end;
     box-sizing: border-box;
-    padding-bottom: 10px;
+    padding-bottom: 6px;
     justify-content: space-between;
 }
 
@@ -97,7 +99,7 @@ body {
 
 .menu {
     color: white;
-    margin-right: 10px;
+    margin: 10px 10px;
     font-size: 12pt;
     transform: rotate(90deg);
 }
@@ -109,8 +111,14 @@ body {
     border: 1px solid white;
 }
 
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .user-name {
-    font-size: 10pt;
+    font-size: 8pt;
     font-weight: 400;
     color: white;
     line-height: 0;
@@ -118,9 +126,11 @@ body {
 
 .user-status {
     color: hsl(276, 100%, 81%);
-    font-size: 8pt;
-    line-height: .5;
+    font-size: 6pt;
+    line-height: 0;
 }
+
+/* app ui */
 
 .phone-content {
     width: 100%;
@@ -135,13 +145,22 @@ body {
     box-sizing: border-box;
 }
 
+/* messages */
+
+.messages{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 .received-message {
     margin: 0 10px;
-    font-size: 8pt;
+    font-size: 6pt;
     color: hsl(276, 55%, 52%);
-    max-width: 50%;
-    background-color: hsl(270, 7%, 64%);
-    border-radius: 15px 15px 15px 5px;
+    max-width: 130px;
+    background-color: hsl(272, 6%, 92%);
+    border-radius: 10px 10px 10px 5px;
     padding: 0 10px;
 
 }
@@ -149,22 +168,26 @@ body {
 .photo {
     background: none !important;
     display: flex;
-    gap: 10px;
+    justify-content: flex-end;
+    box-shadow: none !important;
+    gap: 5px;
+    margin: 0 !important;
 }
 
 .img {
-    width: 50px;
+    width: 40px;
     border-radius: 10px;
 }
 
 .sent-message {
-    font-size: 8pt;
+    font-size: 6pt;
     color: hsl(271, 15%, 43%);
     margin: 0 10px;
-    max-width: 50%;
+    max-width: 130px;
     width: fit-content;
     background-color: white;
-    border-radius: 15px 15px 5px 15px;
+    box-shadow: 5px 5px 10px hsl(240, 1%, 90%);
+    border-radius: 10px 10px 5px 10px;
     padding: 0 10px;
     align-self: flex-end;
 }
@@ -174,12 +197,19 @@ body {
     color: white;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 20px;
+    padding: 0 10px;
     margin: 0 10px;
     height: 30px;
-    width: 55%;
+    width: 150px;
     border-radius: 10px 10px 10px 5px;
     background: linear-gradient(-90deg, hsl(264, 100%, 61%), hsl(293, 100%, 63%));
+}
+
+.left-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
 }
 
 .icon {
@@ -190,18 +220,21 @@ body {
 }
 
 .walk-length {
-    font-size: 8pt;
+    font-size: 6pt;
     font-weight: 300;
 }
 
 .price {
     font-weight: 700;
+    font-size: 10pt !important;
 }
+
+/* text input on screen */
 
 .input {
     background-color: white;
-    width: 95%;
-    height: 75px;
+    width: 90%;
+    height: 40px;
     align-self: center;
     margin: 10px;
     border-radius: 20px;
@@ -216,40 +249,71 @@ body {
 .send-btn {
     background-color: hsl(271, 36%, 24%);
     margin-right: 5px;
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
     display: flex;
     align-items: center;
+    font-size: 16pt;
+    color: white;
+    text-align: center;
+    transform: rotate(180deg);
     justify-content: center;
-    border-radius: 15px;
+    border-radius: 100%;
 }
+
 .input p {
     margin-left: 20px;
-}
-
-i {
-    color: white;
-    font-size: 12pt;
+    font-size: 6pt;
 }
 
 
-
-
-/* text */
+/* body copy on right */
 
 .text {
     width: 450px;
 }
 
 .body {
-    font-size: 16px;
+    font-size: 12pt;
     color: hsl(270, 7%, 64%);
-    line-height: 32px;
+    line-height: 20pt;
 }
 
 .heading {
     font-weight: 500;
-    font-size: 3em;
+    font-size: 28pt;
     color: hsl(271, 36%, 24%);
 }
 
+@media screen and (max-width: 500px) {
+
+    body {
+        height: fit-content;
+    }
+    
+    .flex-container{
+        margin-top: 50px;
+        gap: 20px;
+    }
+    
+    .body {
+        padding: 0 30px ;
+    }
+
+    .text{
+        text-align: center;
+    }
+
+    .background-shape{
+        height: 500px;
+    }
+
+    .purple{
+        transform: translate(-60%);
+    }
+
+    .grey{
+        transform: rotate(180deg) translate(-60%, -30%);
+    }
+    
+}

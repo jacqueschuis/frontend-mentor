@@ -11,7 +11,7 @@
 - [Frontend Mentor Challenge](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q)
 
 ## CSS Illustration Landing Page
-![]()
+![](./css-illustration/screenshot.PNG)
 - [Live Site](https://frontend-mentor-css-illustration.vercel.app/)
 - [Frontend Mentor Solution](#)
 - [Frontend Mentor Challenge](https://www.frontendmentor.io/challenges/chat-app-css-illustration-O5auMkFqY)
