@@ -73,7 +73,7 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    width: 50%;
+    width: 45%;
 }
 
 .results {
@@ -85,7 +85,7 @@ h1 {
     box-sizing: border-box;
     padding: 50px;
     height: 100%;
-    width: 50%;
+    width: 45%;
     border-radius: 20px;
 }
 
