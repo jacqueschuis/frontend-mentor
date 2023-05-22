@@ -1,6 +1,7 @@
 body {
     background-color: hsl(185, 41%, 84%);
     font-family: 'Space Mono', monospace;
+    overflow-x: hidden;
 }
 
 button, input, input::placeholder {
@@ -14,7 +15,8 @@ button, input, input::placeholder {
 }
 
 header {
-    width: 125px;
+    margin: 100px auto;
+    width: 103px;
     height: 50px;
 }
 
@@ -30,33 +32,40 @@ h1 {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);    width: 64vw;
-    height: 35vw;
+    transform: translate(-50%, -50%);    
+    width: calc(375px + (920 - 375) * ((100vw - 375px) / (1440 - 375)));
+    height: 485px;
     background-color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 30px;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 30px hsl(172, 67%, 45%);
 }
 
 .widget-content {
     position: relative;
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     display: flex;
-    gap: 40px;
+    flex-wrap: wrap;
+    gap: 30px;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .button-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 15px;
+    column-gap: 15px;
     justify-items: stretch;
 }
 
 .button-grid input {
-    width: 125px;
+    width: 100%;
 }
 
 .calculator {
@@ -64,7 +73,7 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    width: 100%;
+    width: 50%;
 }
 
 .results {
@@ -76,7 +85,7 @@ h1 {
     box-sizing: border-box;
     padding: 50px;
     height: 100%;
-    width: 100%;
+    width: 50%;
     border-radius: 20px;
 }
 
@@ -85,6 +94,7 @@ h1 {
     height: 100%;
     display: flex;
     flex-direction: column;
+    gap: 25px;
     justify-content: flex-start;
 }
 
@@ -93,16 +103,36 @@ h1 {
     width: 100%;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 button {
     background-color: hsl(183, 100%, 15%);
     color: hsl(189, 41%, 97%);
-    font-size: 20pt;
+    font-size: 18pt;
     box-sizing: border-box;
     padding: 10px;
     border-radius: 5px;
-    width: 125px;
+    width: 100%;
+    height: 48px;
+    text-align: center;
+    transition: .15s;
+}
+
+button:hover,
+button:active {
+    background-color:  hsl(185, 41%, 84%);
+    color: hsl(183, 100%, 15%);
+}
+
+button:focus {
+    background-color: hsl(172, 67%, 45%);
+    color: hsl(183, 100%, 15%);
+}
+
+
+#reset:hover {
+    background-color: hsl(185, 41%, 84%);
 }
 
 #reset {
@@ -114,9 +144,22 @@ button {
 }
 
 input {
+    box-sizing: border-box;
+    padding: 0 20px;
     background-color: hsl(189, 41%, 97%);
     width: 100%;
     min-height: 40px;
+    border-radius: 5px;
+    color: hsl(183, 100%, 15%);
+    font-size: 18pt;
+    text-align: end;
+}
+
+input:active,
+input:hover,
+input:focus {
+    border: 2px solid hsl(172, 67%, 45%);
+    caret-color: hsl(172, 67%, 45%);
 }
 
 input::placeholder {
@@ -127,15 +170,67 @@ input::placeholder {
 
 .result {
     color: hsl(172, 67%, 45%);
-    font-size: 32pt;
+    font-size: calc(24pt + (32 - 24) * ((100vw - 375px) / (1440 - 375)));
+    /* max 32pt */
     margin: 0;
 }
 
 h3 {
     color: hsl(189, 41%, 97%);
+    margin: 0;
+    font-size: 12pt;
+}
+
+p {
+    margin: 0;
+    color: hsl(184, 14%, 56%);
+    font-size: 10pt;
 }
 
 h2 {
     font-size: 12pt;
     color: hsl(184, 14%, 56%);
+    margin-top: 0;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    transform: translate(100%, -75%);
+}
+
+@media screen and (max-width: 500px) {
+    .widget{
+        width: 100vw;
+        height: fit-content;
+        border-radius: 30px 30px 0 0;
+        bottom: 0;
+        top: auto;
+        transform: translate(-50%);
+        padding: 25px;
+    }
+
+    .button-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .results {
+        width: 100%;
+        padding: 25px;
+    }
+
+    .calculator{
+        width: 100%;
+        gap: 40px;
+    }
+    
 }
