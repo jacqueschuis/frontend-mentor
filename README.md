@@ -13,5 +13,5 @@
 ## CSS Illustration Landing Page
 ![](./css-illustration/screenshot.PNG)
 - [Live Site](https://frontend-mentor-css-illustration.vercel.app/)
-- [Frontend Mentor Solution](#)
+- [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/chat-app-landing-page-css-illustration-1CFk_MXzrv)
 - [Frontend Mentor Challenge](https://www.frontendmentor.io/challenges/chat-app-css-illustration-O5auMkFqY)

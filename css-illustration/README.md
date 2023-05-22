@@ -30,8 +30,9 @@ Users should be able to:
 
 ### Links
 
-- [Add solution URL here](https://your-solution-url.com)
 - [Live Site](https://frontend-mentor-css-illustration.vercel.app/)
+- [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/chat-app-landing-page-css-illustration-1CFk_MXzrv)
+- [Frontend Mentor Challenge](https://www.frontendmentor.io/challenges/chat-app-css-illustration-O5auMkFqY)
 
 ## My process
 
