@@ -1,0 +1,141 @@
+body {
+    background-color: hsl(185, 41%, 84%);
+    font-family: 'Space Mono', monospace;
+}
+
+button, input, input::placeholder {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+header {
+    width: 125px;
+    height: 50px;
+}
+
+h1 {
+    color: hsl(186, 14%, 43%);
+    text-transform: uppercase;
+    text-align: justify;
+    overflow-wrap: break-word;
+    font-size: 18pt;
+}
+
+.widget {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);    width: 64vw;
+    height: 35vw;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+}
+
+.widget-content {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.button-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: stretch;
+}
+
+.button-grid input {
+    width: 125px;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
+
+.results {
+    background-color: hsl(183, 100%, 15%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 50px;
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.calculated-results {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.tip-amount,
+.total {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    background-color: hsl(183, 100%, 15%);
+    color: hsl(189, 41%, 97%);
+    font-size: 20pt;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 5px;
+    width: 125px;
+}
+
+#reset {
+    width: 300px;
+    background-color: hsl(172, 67%, 45%);
+    color: hsl(183, 100%, 15%);
+    font-size: 18pt;
+
+}
+
+input {
+    background-color: hsl(189, 41%, 97%);
+    width: 100%;
+    min-height: 40px;
+}
+
+input::placeholder {
+    color: hsl(184, 14%, 56%);
+    font-size: 20pt;
+    text-align: center;
+}
+
+.result {
+    color: hsl(172, 67%, 45%);
+    font-size: 32pt;
+    margin: 0;
+}
+
+h3 {
+    color: hsl(189, 41%, 97%);
+}
+
+h2 {
+    font-size: 12pt;
+    color: hsl(184, 14%, 56%);
+}
