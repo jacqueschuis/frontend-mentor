@@ -93,7 +93,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 ### Useful resources
 
 - [CSS Grid Guide](https://css-tricks.com/snippets/css/complete-guide-grid/) - I've never really used CSS grid before, so I was very unfamiliar with its syntax (which is confusingly quite close to that of Flexbox). Using this resource, though, I was able to make my app work very well and style it incredibly closely to the design file I was given.
-- [CSS Flexbox Guide](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [CSS Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - From the same people as above, gives a great breakdown of all Flexbox properties and is something that I reference to ensure responsiveness.
 
 ## Author
 

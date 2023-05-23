@@ -1,6 +1,7 @@
 body {
     background-color: hsl(185, 41%, 84%);
     font-family: 'Space Mono', monospace;
+    margin: 0;
     overflow-x: hidden;
 }
 
@@ -15,9 +16,9 @@ button, input, input::placeholder {
 }
 
 header {
-    margin: 100px auto;
+    margin: 160px auto 90px auto;
     width: 103px;
-    height: 50px;
+    height: fit-content;
 }
 
 h1 {
@@ -26,34 +27,62 @@ h1 {
     text-align: justify;
     overflow-wrap: break-word;
     font-size: 18pt;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .widget {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);    
+    margin-bottom: 50px;
     width: calc(375px + (920 - 375) * ((100vw - 375px) / (1440 - 375)));
-    height: 485px;
+    height: min-content;
+    min-height: 485px;
     background-color: white;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: stretch;
     border-radius: 30px;
     padding: 40px;
     box-sizing: border-box;
-    box-shadow: 2px 2px 30px hsl(172, 67%, 45%);
+    box-shadow: 0 0px 30px hsl(185, 41%, 70%);
 }
 
 .widget-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
-    align-items: center;
+    height: fit-content;
+    width: 100%;
+    min-height: 100%;
+    gap: 35px;
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+.calculator {
+    display: flex;
+    flex: 1 1 300px;
+    flex-direction: column;
     justify-content: space-between;
+    width: 50%;
+    gap: 35px;
+}
+
+.results {
+    box-sizing: border-box;
+    display: flex;
+    flex: 1 1 300px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 50%;
+    gap: 35px;
+    background-color: hsl(183, 100%, 15%);
+    border-radius: 20px;
+    padding: 50px;
 }
 
 .button-grid {
@@ -66,27 +95,6 @@ h1 {
 
 .button-grid input {
     width: 100%;
-}
-
-.calculator {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    width: 45%;
-}
-
-.results {
-    background-color: hsl(183, 100%, 15%);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 50px;
-    height: 100%;
-    width: 45%;
-    border-radius: 20px;
 }
 
 .calculated-results {
@@ -109,12 +117,12 @@ h1 {
 button {
     background-color: hsl(183, 100%, 15%);
     color: hsl(189, 41%, 97%);
-    font-size: 18pt;
+    font-size: 14pt;
     box-sizing: border-box;
     padding: 10px;
     border-radius: 5px;
     width: 100%;
-    height: 48px;
+    height: 50px;
     text-align: center;
     transition: .15s;
 }
@@ -136,11 +144,9 @@ button:focus {
 }
 
 #reset {
-    width: 300px;
+    width: 100%;
     background-color: hsl(172, 67%, 45%);
     color: hsl(183, 100%, 15%);
-    font-size: 18pt;
-
 }
 
 input {
@@ -148,7 +154,7 @@ input {
     padding: 0 20px;
     background-color: hsl(189, 41%, 97%);
     width: 100%;
-    min-height: 40px;
+    min-height: 50px;
     border-radius: 5px;
     color: hsl(183, 100%, 15%);
     font-size: 18pt;
@@ -165,7 +171,6 @@ input:focus {
 input::placeholder {
     color: hsl(184, 14%, 56%);
     font-size: 20pt;
-    text-align: center;
 }
 
 .result {
@@ -206,15 +211,19 @@ h2 {
 
 @media screen and (max-width: 500px) {
     .widget{
+        position: relative;
         width: 100vw;
-        height: fit-content;
         border-radius: 30px 30px 0 0;
-        bottom: 0;
-        top: auto;
-        transform: translate(-50%);
         padding: 25px;
+        margin-bottom: 0;
+        box-shadow: none;
+        justify-self: flex-end;
     }
 
+    header {
+        margin: 50px auto 50px auto
+    }
+    
     .button-grid {
         grid-template-columns: 1fr 1fr;
     }
