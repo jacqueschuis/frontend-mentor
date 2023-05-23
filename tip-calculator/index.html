@@ -28,25 +28,25 @@
           <div class="category-heading"><h2>Bill</h2></div>
           <div class="input-wrapper">
             <img src="./fem-src/images/icon-dollar.svg" alt="USD icon" class="icon">
-            <input type="text">
+            <input type="text" id="bill" placeholder="0">
           </div>
         </div>
         <div class="calculator-section">
           <div class="category-heading"><h2>Select Tip %</h2></div>
           <div class="button-grid">
-            <button>5%</button>
-            <button>10%</button>
-            <button>15%</button>
-            <button>25%</button>
-            <button>50%</button>
-            <input type="text" placeholder="Custom">
+            <button id="five-percent" value=".05">5%</button>
+            <button id="ten-percent" value=".1">10%</button>
+            <button id="fifteen-percent" value=".15">15%</button>
+            <button id="twenty-five-percent" value=".25">25%</button>
+            <button id="fifty-percent" value=".5">50%</button>
+            <input type="text" placeholder="Custom" id="custom">
           </div>
         </div>
         <div class="calculator-section">
           <div class="category-heading"><h2>Number of People</h2></div>
           <div class="input-wrapper">
             <img src="./fem-src/images/icon-person.svg" alt="icon of a person" class="icon">
-            <input type="text">
+            <input type="text" id="people" placeholder="0">
           </div>
         </div>
       </div>
@@ -57,19 +57,21 @@
               <h3>Tip Amount</h3>
               <p>/ person</p>
             </div>
-            <h2 class="result">$4.27</h2>
+            <h2 class="result" id="tip-result">$0.00</h2>
           </div>
           <div class="total">
             <div class="text-block">
               <h3>Total</h3>
               <p>/ person</p>
             </div>
-            <h2 class="result">$32.79</h2>
+            <h2 class="result" id="total-result">$0.00</h2>
           </div>
         </div>
-        <button id="reset">RESET</button>
+        <button id="reset" disabled class="inactive">RESET</button>
       </div>
     </div>
   </div>
 </body>
+
+<script src="./app.js"></script>
 </html>

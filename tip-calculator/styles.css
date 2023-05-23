@@ -127,26 +127,33 @@ button {
     transition: .15s;
 }
 
-button:hover,
-button:active {
+#five-percent:hover,
+#ten-percent:hover,
+#fifteen-percent:hover,
+#twenty-five-percent:hover,
+#fifty-percent:hover {
     background-color:  hsl(185, 41%, 84%);
     color: hsl(183, 100%, 15%);
 }
 
-button:focus {
+.button-clicked {
     background-color: hsl(172, 67%, 45%);
     color: hsl(183, 100%, 15%);
 }
 
 
-#reset:hover {
+.reset-hover {
     background-color: hsl(185, 41%, 84%);
 }
 
-#reset {
+.active-reset {
     width: 100%;
     background-color: hsl(172, 67%, 45%);
     color: hsl(183, 100%, 15%);
+}
+
+#reset:focus {
+    background-color: hsl(185, 41%, 84%);
 }
 
 input {
@@ -207,6 +214,11 @@ h2 {
     left: 0;
     bottom: 0;
     transform: translate(100%, -75%);
+}
+
+.inactive {
+    background-color: hsl(183, 88%, 39%);
+    color: hsl(186, 14%, 43%);
 }
 
 @media screen and (max-width: 500px) {
