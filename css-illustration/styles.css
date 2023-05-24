@@ -5,7 +5,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: fit-content;
+    min-height: 100vh;
 }
 
 .flex-container {
@@ -15,7 +16,8 @@ body {
     align-items: center;
     width: 100%;
     justify-content: center;
-    margin-top: 50px;
+    padding-top: 50px;
+    box-sizing: border-box;
     gap: calc(30px + (200 - 30) * ((100vw - 375px) / (1440 - 375)) );
 }
 
