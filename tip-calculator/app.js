@@ -32,15 +32,26 @@ const reset = document.querySelector("#reset");
 let prevButton = null;
 let clickedButton = null;
 
+// variables for the input amounts
+let billAmount;
+let tipAmount;
+let peopleAmount;
+
+// result variables
+let netCost;
+let netTip;
+let netCostPC;
+let netTipPC;
+
 function disableReset() {
     reset.classList.add('inactive');
-    reset.classList.remove('active-reset');
+    reset.classList.remove('active-reset', 'reset');
     reset.setAttribute('disabled', '')
 }
 
 function enableReset() {
     reset.removeAttribute('disabled');
-    reset.classList.add('active-reset');
+    reset.classList.add('active-reset','reset');
     reset.classList.remove('inactive');
 }
 
@@ -51,30 +62,45 @@ function zero() {
     for (let button of buttons) {
     button.classList.remove("button-clicked");
     }
-    disableReset();
-    tip.innerHTML='$0.00'
-    total.innerHTML='$0.00'
+  disableReset();
+  clickedButton = null;
+  prevButton = null;
+  billAmount = null;
+  tipAmount = null;
+  netCost = null;
+  netTip = null;
+  netCostPC = null;
+  netTipPC = null;
+  tip.innerHTML='$0.00'
+  total.innerHTML='$0.00'
 }
 
 function parseBill() {
-  const input = bill.value;
-  const billAmount = Number(input.replace(/[^0-9\.]+/g, ""));
-  console.log(billAmount);
+  billAmount = Number(bill.value);
 }
 
-function getTip() {}
+function parsePeople() {
+  peopleAmount = Number(people.value);
+}
 
-function calculate(bill, tip, people) {
-  const noPercent = tip.replace("%", "");
-  const tipToNum = parseInt(noPercent);
-  const tipPercent = tipToNum / 100;
-  const tipAmount = parseInt(bill) * tipPercent;
-  const grandTotal = tipAmount + parseInt(bill);
+function parseTip() {
+  if (clickedButton) {
+    tipAmount = Number(clickedButton.value);
+    return console.log(tipAmount);
+  }
+  tipAmount = Number(custom.value / 100);
+}
 
-  const calculatedTip = tipAmount / people;
-  const calculatedTotal = grandTotal / people;
-
-  return { calculatedTip, calculatedTotal };
+function calculate() {
+  if (!(billAmount && tipAmount && peopleAmount)) {
+    return;
+  }
+  netTip = Number(billAmount * tipAmount);
+  netCost = Number(netTip + billAmount);
+  netCostPC = Number(netCost / peopleAmount);
+  netTipPC = Number(netTip / peopleAmount);
+  console.log(`tip amount per person: $${netTipPC}`)
+  console.log(`total amount per person: $${netCostPC}`)
 } 
 
 function displayResults(obj) {
@@ -86,14 +112,37 @@ reset.addEventListener('click', () => {
     zero();
 })
 
-bill.addEventListener('keyup', () => {
+bill.addEventListener('keyup', (e) => {
+  if (!e.target.value){
+    disableReset();
+    billAmount = null;
+  }
+  if (e.target.value.match(/\d+\.?\d*/) && !(e.target.value.match(/[a-zA-Z]/g) || e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g))) {
     enableReset();
     parseBill();
+    console.log(`bill total: $${billAmount}`)
+  }
+  if (e.target.value.match(/[a-zA-Z]/g) || e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)) {
+    disableReset();
+    billAmount = null;
+  }
 }) 
 
-people.addEventListener('keyup', () => {
+people.addEventListener('keyup', (e) => {
+  if (!e.target.value){
+    disableReset();
+    peopleAmount = null;
+  }
+  if (e.target.value.match(/\d+\.?\d*/) && !(e.target.value.match(/[a-zA-Z]/g) || e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g))) {
     enableReset();
-})
+    parsePeople();
+    console.log(`people: ${peopleAmount}`)
+  }
+  if (e.target.value.match(/[a-zA-Z]/g) || e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g)) {
+    disableReset();
+    peopleAmount = null;
+
+  }})
 
 custom.addEventListener("click", () => {
   clickedButton = null;
@@ -102,15 +151,24 @@ custom.addEventListener("click", () => {
   }
 });
 
-custom.addEventListener('keyup', () => {
+custom.addEventListener('keyup', (e) => {
+  if (!(e.target.value) && !clickedButton && !(bill.value && people.value)){
+    disableReset();
+  }
+  if (e.target.value.match(/\d+\.?\d*/)) {
     enableReset();
-});
+    parseTip();
+  }
+  if (e.target.value.match(/[a-zA-Z]/g) || e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)) {
+    disableReset();
+  }});
 
 for(let button of buttons) {
     button.addEventListener('click', (e) => {
         enableReset();
         e.target.classList.add('button-clicked');
         clickedButton = e.target;
+        custom.value = '';
 
     if (prevButton !== null) {
       prevButton.classList.remove("button-clicked");
@@ -121,5 +179,19 @@ for(let button of buttons) {
 }
 
 widget.addEventListener('click', (e) => {
-    const isButton = e
+  const isFormElement = e.target.nodeName === 'BUTTON' || e.target.nodeName === 'INPUT'
+  if (!isFormElement && clickedButton) {
+    disableReset();
+    prevButton.classList.remove('button-clicked');
+    prevButton = null;
+  }
+})
+
+// development check
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') {
+    return
+  }
+  parseTip();
+  calculate();
 })

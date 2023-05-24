@@ -1,8 +1,12 @@
+html, body {
+    overflow-x: hidden;
+}
+
 body {
     background-color: hsl(185, 41%, 84%);
     font-family: 'Space Mono', monospace;
     margin: 0;
-    overflow-x: hidden;
+    position: relative
 }
 
 button, input, input::placeholder {
@@ -142,7 +146,7 @@ button {
 }
 
 
-.reset-hover {
+.reset:hover {
     background-color: hsl(185, 41%, 84%);
 }
 
