@@ -1,134 +1,137 @@
-html, body {
-    overflow-x: hidden;
+html,
+body {
+  overflow-x: hidden;
 }
 
 body {
-    background-color: hsl(185, 41%, 84%);
-    font-family: 'Space Mono', monospace;
-    margin: 0;
-    position: relative
+  background-color: hsl(185, 41%, 84%);
+  font-family: "Space Mono", monospace;
+  margin: 0;
+  position: relative;
 }
 
-button, input, input::placeholder {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+button,
+input,
+input::placeholder {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
 }
 
 header {
-    margin: 160px auto 90px auto;
-    width: 103px;
-    height: fit-content;
+  margin: 160px auto 90px auto;
+  width: 103px;
+  height: fit-content;
 }
 
 h1 {
-    color: hsl(186, 14%, 43%);
-    text-transform: uppercase;
-    text-align: justify;
-    overflow-wrap: break-word;
-    font-size: 18pt;
-    margin: 0;
+  color: hsl(186, 14%, 43%);
+  text-transform: uppercase;
+  text-align: justify;
+  overflow-wrap: break-word;
+  font-size: 18pt;
+  margin: 0;
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .widget {
-    margin-bottom: 50px;
-    width: calc(375px + (920 - 375) * ((100vw - 375px) / (1440 - 375)));
-    height: min-content;
-    min-height: 485px;
-    background-color: white;
-    display: flex;
-    justify-content: stretch;
-    border-radius: 30px;
-    padding: 40px;
-    box-sizing: border-box;
-    box-shadow: 0 0px 30px hsl(185, 41%, 70%);
+  margin-bottom: 50px;
+  width: calc(375px + (920 - 375) * ((100vw - 375px) / (1440 - 375)));
+  height: min-content;
+  min-height: 485px;
+  background-color: white;
+  display: flex;
+  justify-content: stretch;
+  border-radius: 30px;
+  padding: 40px;
+  box-sizing: border-box;
+  box-shadow: 0 0px 30px hsl(185, 41%, 70%);
 }
 
 .widget-content {
-    display: flex;
-    flex-wrap: wrap;
-    height: fit-content;
-    width: 100%;
-    min-height: 100%;
-    gap: 35px;
-    align-items: stretch;
-    justify-content: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  height: fit-content;
+  width: 100%;
+  min-height: 100%;
+  gap: 35px;
+  align-items: stretch;
+  justify-content: stretch;
 }
 
 .calculator {
-    display: flex;
-    flex: 1 1 300px;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 50%;
-    gap: 35px;
+  display: flex;
+  flex: 1 1 300px;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  gap: 35px;
 }
 
 .results {
-    box-sizing: border-box;
-    display: flex;
-    flex: 1 1 300px;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 50%;
-    gap: 35px;
-    background-color: hsl(183, 100%, 15%);
-    border-radius: 20px;
-    padding: 50px;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 300px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  gap: 35px;
+  background-color: hsl(183, 100%, 15%);
+  border-radius: 20px;
+  padding: 50px;
 }
 
 .button-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    row-gap: 15px;
-    column-gap: 15px;
-    justify-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 15px;
+  column-gap: 15px;
+  justify-items: stretch;
 }
 
 .button-grid input {
-    width: 100%;
+  width: 100%;
 }
 
 .calculated-results {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: flex-start;
 }
 
 .tip-amount,
 .total {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 button {
-    background-color: hsl(183, 100%, 15%);
-    color: hsl(189, 41%, 97%);
-    font-size: 14pt;
-    box-sizing: border-box;
-    padding: 10px;
-    border-radius: 5px;
-    width: 100%;
-    height: 50px;
-    text-align: center;
-    transition: .15s;
+  background-color: hsl(183, 100%, 15%);
+  color: hsl(189, 41%, 97%);
+  font-size: 14pt;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  transition: 0.15s;
 }
 
 #five-percent:hover,
@@ -136,130 +139,128 @@ button {
 #fifteen-percent:hover,
 #twenty-five-percent:hover,
 #fifty-percent:hover {
-    background-color:  hsl(185, 41%, 84%);
-    color: hsl(183, 100%, 15%);
+  background-color: hsl(185, 41%, 84%);
+  color: hsl(183, 100%, 15%);
 }
 
 .button-clicked {
-    background-color: hsl(172, 67%, 45%);
-    color: hsl(183, 100%, 15%);
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
 }
 
-
 .reset:hover {
-    background-color: hsl(185, 41%, 84%);
+  background-color: hsl(185, 41%, 84%);
 }
 
 .active-reset {
-    width: 100%;
-    background-color: hsl(172, 67%, 45%);
-    color: hsl(183, 100%, 15%);
+  width: 100%;
+  background-color: hsl(172, 67%, 45%);
+  color: hsl(183, 100%, 15%);
 }
 
 #reset:focus {
-    background-color: hsl(185, 41%, 84%);
+  background-color: hsl(185, 41%, 84%);
 }
 
 #reset {
-    transition: .15s;
+  transition: 0.15s;
 }
 
 input {
-    box-sizing: border-box;
-    padding: 0 20px;
-    background-color: hsl(189, 41%, 97%);
-    width: 100%;
-    min-height: 50px;
-    border-radius: 5px;
-    color: hsl(183, 100%, 15%);
-    font-size: 18pt;
-    text-align: end;
+  box-sizing: border-box;
+  padding: 0 20px;
+  background-color: hsl(189, 41%, 97%);
+  width: 100%;
+  min-height: 50px;
+  border-radius: 5px;
+  color: hsl(183, 100%, 15%);
+  font-size: 18pt;
+  text-align: end;
 }
 
 input:active,
 input:hover,
 input:focus {
-    border: 2px solid hsl(172, 67%, 45%);
-    caret-color: hsl(172, 67%, 45%);
+  border: 2px solid hsl(172, 67%, 45%);
+  caret-color: hsl(172, 67%, 45%);
 }
 
 input::placeholder {
-    color: hsl(184, 14%, 56%);
-    font-size: 20pt;
+  color: hsl(184, 14%, 56%);
+  font-size: 20pt;
 }
 
 .result {
-    color: hsl(172, 67%, 45%);
-    font-size: calc(24pt + (32 - 24) * ((100vw - 375px) / (1440 - 375)));
-    /* max 32pt */
-    margin: 0;
+  color: hsl(172, 67%, 45%);
+  font-size: calc(24pt + (32 - 24) * ((100vw - 375px) / (1440 - 375)));
+  /* max 32pt */
+  margin: 0;
 }
 
 h3 {
-    color: hsl(189, 41%, 97%);
-    margin: 0;
-    font-size: 12pt;
+  color: hsl(189, 41%, 97%);
+  margin: 0;
+  font-size: 12pt;
 }
 
 p {
-    margin: 0;
-    color: hsl(184, 14%, 56%);
-    font-size: 10pt;
+  margin: 0;
+  color: hsl(184, 14%, 56%);
+  font-size: 10pt;
 }
 
 h2 {
-    font-size: 12pt;
-    color: hsl(184, 14%, 56%);
-    margin-top: 0;
+  font-size: 12pt;
+  color: hsl(184, 14%, 56%);
+  margin-top: 0;
 }
 
 .input-wrapper {
-    position: relative;
+  position: relative;
 }
 
 .icon {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    transform: translate(100%, -75%);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translate(100%, -75%);
 }
 
 .inactive {
-    background-color: hsl(183, 88%, 39%);
-    color: hsl(186, 14%, 43%);
+  background-color: hsl(183, 88%, 39%);
+  color: hsl(186, 14%, 43%);
 }
 
 @media screen and (max-width: 500px) {
-    .widget{
-        position: relative;
-        width: 100vw;
-        border-radius: 30px 30px 0 0;
-        padding: 25px;
-        margin-bottom: 0;
-        box-shadow: none;
-        justify-self: flex-end;
-    }
+  .widget {
+    position: relative;
+    width: 100vw;
+    border-radius: 30px 30px 0 0;
+    padding: 25px;
+    margin-bottom: 0;
+    box-shadow: none;
+    justify-self: flex-end;
+  }
 
-    header {
-        margin: 50px auto 50px auto
-    }
-    
-    .button-grid {
-        grid-template-columns: 1fr 1fr;
-    }
+  header {
+    margin: 50px auto 50px auto;
+  }
 
-    button {
-        width: 100%;
-    }
+  .button-grid {
+    grid-template-columns: 1fr 1fr;
+  }
 
-    .results {
-        width: 100%;
-        padding: 25px;
-    }
+  button {
+    width: 100%;
+  }
 
-    .calculator{
-        width: 100%;
-        gap: 40px;
-    }
-    
+  .results {
+    width: 100%;
+    padding: 25px;
+  }
+
+  .calculator {
+    width: 100%;
+    gap: 40px;
+  }
 }

@@ -44,24 +44,24 @@ let netCostPC;
 let netTipPC;
 
 function disableReset() {
-    reset.classList.add('inactive');
-    reset.classList.remove('active-reset', 'reset');
-    reset.setAttribute('disabled', '')
+  reset.classList.add("inactive");
+  reset.classList.remove("active-reset", "reset");
+  reset.setAttribute("disabled", "");
 }
 
 function enableReset() {
-    reset.removeAttribute('disabled');
-    reset.classList.add('active-reset','reset');
-    reset.classList.remove('inactive');
+  reset.removeAttribute("disabled");
+  reset.classList.add("active-reset", "reset");
+  reset.classList.remove("inactive");
 }
 
 function zero() {
   bill.value = "";
   people.value = "";
   custom.value = "";
-    for (let button of buttons) {
+  for (let button of buttons) {
     button.classList.remove("button-clicked");
-    }
+  }
   disableReset();
   clickedButton = null;
   prevButton = null;
@@ -71,8 +71,8 @@ function zero() {
   netTip = null;
   netCostPC = null;
   netTipPC = null;
-  tip.innerHTML='$0.00'
-  total.innerHTML='$0.00'
+  tip.innerHTML = "$0.00";
+  total.innerHTML = "$0.00";
 }
 
 function parseBill() {
@@ -99,50 +99,68 @@ function calculate() {
   netCost = Number(netTip + billAmount);
   netCostPC = Number(netCost / peopleAmount);
   netTipPC = Number(netTip / peopleAmount);
-  console.log(`tip amount per person: $${netTipPC}`)
-  console.log(`total amount per person: $${netCostPC}`)
-} 
-
-function displayResults(obj) {
-    tip.innerHTML = obj.calculatedTip;
-    total.innerHTML = obj.calculatedTotal;
+  console.log(`tip amount per person: $${netTipPC}`);
+  console.log(`total amount per person: $${netCostPC}`);
 }
 
-reset.addEventListener('click', () => {
-    zero();
-})
+function displayResults(obj) {
+  tip.innerHTML = obj.calculatedTip;
+  total.innerHTML = obj.calculatedTotal;
+}
 
-bill.addEventListener('keyup', (e) => {
-  if (!e.target.value){
+reset.addEventListener("click", () => {
+  zero();
+});
+
+bill.addEventListener("keyup", (e) => {
+  if (!e.target.value) {
     disableReset();
     billAmount = null;
   }
-  if (e.target.value.match(/\d+\.?\d*/) && !(e.target.value.match(/[a-zA-Z]/g) || e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g))) {
+  if (
+    e.target.value.match(/\d+\.?\d*/) &&
+    !(
+      e.target.value.match(/[a-zA-Z]/g) ||
+      e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
+    )
+  ) {
     enableReset();
     parseBill();
-    console.log(`bill total: $${billAmount}`)
+    console.log(`bill total: $${billAmount}`);
   }
-  if (e.target.value.match(/[a-zA-Z]/g) || e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)) {
+  if (
+    e.target.value.match(/[a-zA-Z]/g) ||
+    e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
+  ) {
     disableReset();
     billAmount = null;
   }
-}) 
+});
 
-people.addEventListener('keyup', (e) => {
-  if (!e.target.value){
+people.addEventListener("keyup", (e) => {
+  if (!e.target.value) {
     disableReset();
     peopleAmount = null;
   }
-  if (e.target.value.match(/\d+\.?\d*/) && !(e.target.value.match(/[a-zA-Z]/g) || e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g))) {
+  if (
+    e.target.value.match(/\d+\.?\d*/) &&
+    !(
+      e.target.value.match(/[a-zA-Z]/g) ||
+      e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g)
+    )
+  ) {
     enableReset();
     parsePeople();
-    console.log(`people: ${peopleAmount}`)
+    console.log(`people: ${peopleAmount}`);
   }
-  if (e.target.value.match(/[a-zA-Z]/g) || e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g)) {
+  if (
+    e.target.value.match(/[a-zA-Z]/g) ||
+    e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g)
+  ) {
     disableReset();
     peopleAmount = null;
-
-  }})
+  }
+});
 
 custom.addEventListener("click", () => {
   clickedButton = null;
@@ -151,47 +169,52 @@ custom.addEventListener("click", () => {
   }
 });
 
-custom.addEventListener('keyup', (e) => {
-  if (!(e.target.value) && !clickedButton && !(bill.value && people.value)){
+custom.addEventListener("keyup", (e) => {
+  if (!e.target.value && !clickedButton && !(bill.value && people.value)) {
     disableReset();
   }
   if (e.target.value.match(/\d+\.?\d*/)) {
     enableReset();
     parseTip();
   }
-  if (e.target.value.match(/[a-zA-Z]/g) || e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)) {
+  if (
+    e.target.value.match(/[a-zA-Z]/g) ||
+    e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
+  ) {
     disableReset();
-  }});
+  }
+});
 
-for(let button of buttons) {
-    button.addEventListener('click', (e) => {
-        enableReset();
-        e.target.classList.add('button-clicked');
-        clickedButton = e.target;
-        custom.value = '';
+for (let button of buttons) {
+  button.addEventListener("click", (e) => {
+    enableReset();
+    e.target.classList.add("button-clicked");
+    clickedButton = e.target;
+    custom.value = "";
 
     if (prevButton !== null) {
       prevButton.classList.remove("button-clicked");
     }
 
-        prevButton = e.target;
+    prevButton = e.target;
   });
 }
 
-widget.addEventListener('click', (e) => {
-  const isFormElement = e.target.nodeName === 'BUTTON' || e.target.nodeName === 'INPUT'
+widget.addEventListener("click", (e) => {
+  const isFormElement =
+    e.target.nodeName === "BUTTON" || e.target.nodeName === "INPUT";
   if (!isFormElement && clickedButton) {
     disableReset();
-    prevButton.classList.remove('button-clicked');
+    prevButton.classList.remove("button-clicked");
     prevButton = null;
   }
-})
+});
 
 // development check
-document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Enter') {
-    return
+document.addEventListener("keydown", (e) => {
+  if (e.key !== "Enter") {
+    return;
   }
   parseTip();
   calculate();
-})
+});

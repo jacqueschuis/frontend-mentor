@@ -48,7 +48,7 @@ body {
 }
 
 input {
-  width: calc(70px + (125 - 70) * ((100vw - 375px) / (1440 - 375)));;
+  width: calc(70px + (125 - 70) * ((100vw - 375px) / (1440 - 375)));
   height: 60px;
   font-size: calc(18px + (28 - 18) * ((100vw - 375px) / (1440 - 375)));
   border: 2px solid hsl(0, 0%, 94%);
@@ -83,7 +83,7 @@ input:focus {
   color: hsl(0, 0%, 8%);
   background-color: none;
   margin-top: 0;
-  margin-bottom: .25em;
+  margin-bottom: 0.25em;
 }
 
 .result {
@@ -98,7 +98,7 @@ input:focus {
   font-style: italic;
   color: hsl(0, 100%, 67%);
   display: none;
-  margin-top: .5em;
+  margin-top: 0.5em;
   margin-bottom: 0;
 }
 
@@ -132,7 +132,7 @@ input:focus {
 
 footer {
   display: flex;
-  font-size: calc(12px + (18 - 12) * ((100vw - 375px) / (1440 - 375)) );
+  font-size: calc(12px + (18 - 12) * ((100vw - 375px) / (1440 - 375)));
   justify-content: space-evenly;
   color: hsl(259, 100%, 65%);
   font-weight: 400;
@@ -144,8 +144,8 @@ footer a {
   color: hsl(259, 100%, 65%);
 }
 
-@media screen and (max-width: 500px){
-  .inputsContainer{
+@media screen and (max-width: 500px) {
+  .inputsContainer {
     justify-content: center;
     padding-bottom: 15px;
   }
@@ -158,10 +158,9 @@ footer a {
     flex: 1 1 33%;
   }
 
-  .submitBtn{
+  .submitBtn {
     right: auto;
     width: 25px;
     bottom: -20%;
   }
-  
 }

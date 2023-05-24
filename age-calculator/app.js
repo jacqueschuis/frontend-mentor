@@ -87,47 +87,84 @@ function validateForm() {
   const day = dayInput.value;
   const month = monthInput.value;
   const year = yearInput.value;
-  
+
   let errors = [];
-  
-  if (!day) {errors.push('day-empty');}
-  if (! month) {errors.push('month-empty')}
-  if (!year) {errors.push('year-empty')}
-  if (!errors.includes('day-empty') && day > 31 || day < 0) {errors.push('day-invalid')}
-  if (!errors.includes('month-empty') && month > 12 || month < 0) {errors.push('month-invalid')}
-  if (!errors.includes('day-empty') && day.toString().length !== 2 && (!(errors.includes('day-invalid')))) {
-    errors.push('day-invalid');
+
+  if (!day) {
+    errors.push("day-empty");
   }
-  if (!errors.includes('month-empty') && month.toString().length !== 2 && (!(errors.includes('month-invalid')))) {
-    errors.push('month-invalid')
+  if (!month) {
+    errors.push("month-empty");
   }
-  if (!errors.includes('year-empty') && year.toString().length !== 4 && (!(errors.includes('year-invalid')))) {
-    errors.push('year-invalid')
+  if (!year) {
+    errors.push("year-empty");
   }
-  if (!errors.includes('day-empty') && isNaN(day) && (!(errors.includes('day-invalid')))){
-    errors.push('day-invalid');
+  if ((!errors.includes("day-empty") && day > 31) || day < 0) {
+    errors.push("day-invalid");
   }
-  if (!errors.includes('month-empty') && isNaN(month) && (!(errors.includes('month-invalid')))){
-    errors.push('month-invalid');
+  if ((!errors.includes("month-empty") && month > 12) || month < 0) {
+    errors.push("month-invalid");
   }
-  if (!errors.includes('year-empty') && isNaN(year) && (!(errors.includes('year-invalid')))){
-    errors.push('year-invalid')
+  if (
+    !errors.includes("day-empty") &&
+    day.toString().length !== 2 &&
+    !errors.includes("day-invalid")
+  ) {
+    errors.push("day-invalid");
   }
- return errors
+  if (
+    !errors.includes("month-empty") &&
+    month.toString().length !== 2 &&
+    !errors.includes("month-invalid")
+  ) {
+    errors.push("month-invalid");
+  }
+  if (
+    !errors.includes("year-empty") &&
+    year.toString().length !== 4 &&
+    !errors.includes("year-invalid")
+  ) {
+    errors.push("year-invalid");
+  }
+  if (
+    !errors.includes("day-empty") &&
+    isNaN(day) &&
+    !errors.includes("day-invalid")
+  ) {
+    errors.push("day-invalid");
+  }
+  if (
+    !errors.includes("month-empty") &&
+    isNaN(month) &&
+    !errors.includes("month-invalid")
+  ) {
+    errors.push("month-invalid");
+  }
+  if (
+    !errors.includes("year-empty") &&
+    isNaN(year) &&
+    !errors.includes("year-invalid")
+  ) {
+    errors.push("year-invalid");
+  }
+  return errors;
 }
 
 function handleErrors(errors) {
-
   function setResult() {
     resultYear.innerHTML = "--";
     resultMonth.innerHTML = "--";
     resultDay.innerHTML = "--";
   }
 
-  if (errors.includes('day-empty') && errors.includes('month-empty') && errors.includes('year-empty')) {
+  if (
+    errors.includes("day-empty") &&
+    errors.includes("month-empty") &&
+    errors.includes("year-empty")
+  ) {
     setResult();
     dayErrorContainer.style.display = "block";
-    formError.style.display = 'block';
+    formError.style.display = "block";
     dayInput.style.border = errorBorder;
     dayContainer.style.color = errorRed;
     monthInput.style.border = errorBorder;
@@ -138,7 +175,7 @@ function handleErrors(errors) {
       subheading.style.color = errorRed;
     }
   } else {
-    if (errors.includes('day-empty')){
+    if (errors.includes("day-empty")) {
       setResult();
       dayErrorContainer.style.display = "block";
       dayErrorEmpty.style.display = "block";
@@ -148,7 +185,7 @@ function handleErrors(errors) {
         subheading.style.color = errorRed;
       }
     }
-    if (errors.includes('month-empty')){
+    if (errors.includes("month-empty")) {
       setResult();
       monthErrorContainer.style.display = "block";
       monthErrorEmpty.style.display = "block";
@@ -158,7 +195,7 @@ function handleErrors(errors) {
         subheading.style.color = errorRed;
       }
     }
-    if (errors.includes('year-empty')){
+    if (errors.includes("year-empty")) {
       setResult();
       yearErrorContainer.style.display = "block";
       yearErrorEmpty.style.display = "block";
@@ -170,32 +207,32 @@ function handleErrors(errors) {
     }
   }
 
-  if (errors.includes('day-invalid')){
+  if (errors.includes("day-invalid")) {
     setResult();
     dayErrorContainer.style.display = "block";
     dayErrorInvalid.style.display = "block";
     dayInput.style.border = errorBorder;
-    dayInput.value = '';
+    dayInput.value = "";
     for (let subheading of subheadings) {
       subheading.style.color = errorRed;
     }
   }
-  if (errors.includes('month-invalid')){
+  if (errors.includes("month-invalid")) {
     setResult();
     monthErrorContainer.style.display = "block";
     monthErrorInvalid.style.display = "block";
     monthInput.style.border = errorBorder;
-    monthInput.value = '';
+    monthInput.value = "";
     for (let subheading of subheadings) {
       subheading.style.color = errorRed;
     }
   }
-  if (errors.includes('year-invalid')){
+  if (errors.includes("year-invalid")) {
     setResult();
     yearErrorContainer.style.display = "block";
     yearErrorInvalid.style.display = "block";
     yearInput.style.border = errorBorder;
-    yearInput.value = '';
+    yearInput.value = "";
     for (let subheading of subheadings) {
       subheading.style.color = errorRed;
     }
@@ -205,7 +242,7 @@ function handleErrors(errors) {
 submit.addEventListener("click", () => {
   setNoError();
   const errors = validateForm();
-  if(errors.length){
+  if (errors.length) {
     return handleErrors(errors);
   }
   const res = calculateAge();
@@ -216,12 +253,12 @@ allInputs.forEach((item) => {
   item.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       setNoError();
-    const errors = validateForm();
-    if(errors.length){
-      return handleErrors(errors);
-    }
-    const res = calculateAge();
-    return setAge(res);
+      const errors = validateForm();
+      if (errors.length) {
+        return handleErrors(errors);
+      }
+      const res = calculateAge();
+      return setAge(res);
     }
     return;
   });
