@@ -40,14 +40,14 @@ body {
     background: linear-gradient(45deg, hsl(264, 100%, 61%), hsl(293, 100%, 63%));
     align-self: flex-start;
     left: 0;
-    transform: translate(calc(-35% + (-65 - 35) * ((100vw - 375px) / (1440 - 375)) ));
+    transform: translate(-40%);
 }
 
 .grey {
     background-color:hsl(270, 20%, 96%);
     align-self: flex-end;
     right: 0;
-    transform: rotate(180deg) translate(calc(-35% + (-65 - 35) * ((100vw - 375px) / (1440 - 375)) ));
+    transform: rotate(180deg) translate(-40%);
 }
 
 /* phone  */
@@ -297,5 +297,13 @@ body {
 @media screen and (max-width: 725px) {
     .text {
         text-align: center;
+    }
+
+    .purple {
+        transform: translate(-60%);
+    }
+
+    .grey {
+        transform: rotate(180deg) translate(-60%);
     }
 }
