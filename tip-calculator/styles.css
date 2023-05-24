@@ -156,6 +156,10 @@ button {
     background-color: hsl(185, 41%, 84%);
 }
 
+#reset {
+    transition: .15s;
+}
+
 input {
     box-sizing: border-box;
     padding: 0 20px;

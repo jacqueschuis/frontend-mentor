@@ -32,20 +32,28 @@ const reset = document.querySelector("#reset");
 let prevButton = null;
 let clickedButton = null;
 
+function disableReset() {
+    reset.classList.add('inactive');
+    reset.classList.remove('active-reset');
+    reset.setAttribute('disabled', '')
+}
+
+function enableReset() {
+    reset.removeAttribute('disabled');
+    reset.classList.add('active-reset');
+    reset.classList.remove('inactive');
+}
+
 function zero() {
   bill.value = "";
   people.value = "";
   custom.value = "";
-  for (let button of buttons) {
+    for (let button of buttons) {
     button.classList.remove("button-clicked");
-  }
-  reset.classList.add("inactive");
-  reset.classList.remove("active-reset");
-  reset.setAttribute("disabled", "");
-  prevButton = null;
-  clickedButton = null;
-  tip.innerHTML = "$0.00";
-  total.innerHTML = "$0.00";
+    }
+    disableReset();
+    tip.innerHTML='$0.00'
+    total.innerHTML='$0.00'
 }
 
 function parseBill() {
@@ -67,29 +75,25 @@ function calculate(bill, tip, people) {
   const calculatedTotal = grandTotal / people;
 
   return { calculatedTip, calculatedTotal };
-}
+} 
 
 function displayResults(obj) {
-  tip.innerHTML = obj.calculatedTip;
-  total.innerHTML = obj.calculatedTotal;
+    tip.innerHTML = obj.calculatedTip;
+    total.innerHTML = obj.calculatedTotal;
 }
 
-reset.addEventListener("click", () => {
-  zero();
-});
+reset.addEventListener('click', () => {
+    zero();
+})
 
-bill.addEventListener("keyup", () => {
-  reset.removeAttribute("disabled");
-  reset.classList.add("active-reset");
-  reset.classList.remove("inactive");
-  parseBill();
-});
+bill.addEventListener('keyup', () => {
+    enableReset();
+    parseBill();
+}) 
 
-people.addEventListener("keyup", () => {
-  reset.removeAttribute("disabled");
-  reset.classList.add("active-reset");
-  reset.classList.remove("inactive");
-});
+people.addEventListener('keyup', () => {
+    enableReset();
+})
 
 custom.addEventListener("click", () => {
   clickedButton = null;
@@ -98,33 +102,24 @@ custom.addEventListener("click", () => {
   }
 });
 
-custom.addEventListener("keyup", () => {
-  reset.removeAttribute("disabled");
-  reset.classList.add("active-reset");
-  reset.classList.remove("inactive");
+custom.addEventListener('keyup', () => {
+    enableReset();
 });
 
-for (let button of buttons) {
-  button.addEventListener("click", (e) => {
-    reset.removeAttribute("disabled");
-    reset.classList.add("active-reset");
-    reset.classList.remove("inactive");
-    e.target.classList.add("button-clicked");
-    clickedButton = e.target;
+for(let button of buttons) {
+    button.addEventListener('click', (e) => {
+        enableReset();
+        e.target.classList.add('button-clicked');
+        clickedButton = e.target;
 
     if (prevButton !== null) {
       prevButton.classList.remove("button-clicked");
     }
 
-    prevButton = e.target;
+        prevButton = e.target;
   });
 }
 
-// widget.addEventListener('click', (e) => {
-//     function buttonCheck() {
-//         for (let button of buttons) {
-//             if (button.classList.contains))
-//         }
-//     }
-//     console.log(buttonCheck());
-// })
+widget.addEventListener('click', (e) => {
+    const isButton = e
+})

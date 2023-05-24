@@ -2,6 +2,10 @@ body {
     font-family: 'Rubik', sans-serif;
     margin: 0;
     overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 .flex-container {
@@ -11,35 +15,32 @@ body {
     align-items: center;
     width: 100%;
     justify-content: center;
-    margin: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    gap: 200px;
+    margin-top: 50px;
+    gap: calc(30px + (200 - 30) * ((100vw - 375px) / (1440 - 375)) );
 }
 
 /* background shapes */
 
 .background-shape {
+    position: absolute;
     width: 500px;
-    height: 700px;
+    height: calc(500px + (700 - 500) * ((100vw - 375px) / (1440 - 375)) );;
     border-radius: 0 0 250px 250px;
     z-index: 0;
 }
 
 .purple {
     background: linear-gradient(45deg, hsl(264, 100%, 61%), hsl(293, 100%, 63%));
-    position: absolute;
-    transform: translate(-35%);
+    align-self: flex-start;
+    left: 0;
+    transform: translate(calc(-35% + (-65 - 35) * ((100vw - 375px) / (1440 - 375)) ));
 }
 
 .grey {
     background-color:hsl(270, 20%, 96%);
-    position: absolute;
+    align-self: flex-end;
     right: 0;
-    bottom: 0;
-    transform: rotate(180deg) translate(-30%);
+    transform: rotate(180deg) translate(calc(-35% + (-65 - 35) * ((100vw - 375px) / (1440 - 375)) ));
 }
 
 /* phone  */
@@ -283,35 +284,8 @@ body {
     color: hsl(271, 36%, 24%);
 }
 
-@media screen and (max-width: 500px) {
-
-    body {
-        height: fit-content;
-    }
-    
-    .flex-container{
-        margin-top: 50px;
-        gap: 20px;
-    }
-    
-    .body {
-        padding: 0 30px ;
-    }
-
-    .text{
+@media screen and (max-width: 725px) {
+    .text {
         text-align: center;
     }
-
-    .background-shape{
-        height: 500px;
-    }
-
-    .purple{
-        transform: translate(-60%);
-    }
-
-    .grey{
-        transform: rotate(180deg) translate(-60%, -30%);
-    }
-    
 }
