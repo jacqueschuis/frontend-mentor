@@ -108,59 +108,66 @@ function displayResults(obj) {
   total.innerHTML = obj.calculatedTotal;
 }
 
+function checkInputs() {
+  if (bill.value || people.value || clickedButton || custom.value) {
+    return enableReset();
+  }
+  disableReset();
+}
+
 reset.addEventListener("click", () => {
   zero();
 });
 
-bill.addEventListener("keyup", (e) => {
-  if (!e.target.value) {
-    disableReset();
-    billAmount = null;
-  }
-  if (
-    e.target.value.match(/\d+\.?\d*/) &&
-    !(
-      e.target.value.match(/[a-zA-Z]/g) ||
-      e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
-    )
-  ) {
-    enableReset();
-    parseBill();
-    console.log(`bill total: $${billAmount}`);
-  }
-  if (
-    e.target.value.match(/[a-zA-Z]/g) ||
-    e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
-  ) {
-    disableReset();
-    billAmount = null;
-  }
-});
+// bill.addEventListener("keyup", (e) => {
+//   if (!e.target.value) {
+//     disableReset();
+//     billAmount = null;
+//   }
+//   if (
+//     e.target.value.match(/\d+\.?\d*/) &&
+//     !(
+//       e.target.value.match(/[a-zA-Z]/g) ||
+//       e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
+//     )
+//   ) {
+//     enableReset();
+//     parseBill();
+//     console.log(`bill total: $${billAmount}`);
+//   }
+//   if (
+//     e.target.value.match(/[a-zA-Z]/g) ||
+//     e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
+//   ) {
+//     disableReset();
+//     billAmount = null;
+//   }
+// });
 
-people.addEventListener("keyup", (e) => {
-  if (!e.target.value) {
-    disableReset();
-    peopleAmount = null;
-  }
-  if (
-    e.target.value.match(/\d+\.?\d*/) &&
-    !(
-      e.target.value.match(/[a-zA-Z]/g) ||
-      e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g)
-    )
-  ) {
-    enableReset();
-    parsePeople();
-    console.log(`people: ${peopleAmount}`);
-  }
-  if (
-    e.target.value.match(/[a-zA-Z]/g) ||
-    e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g)
-  ) {
-    disableReset();
-    peopleAmount = null;
-  }
-});
+// people.addEventListener("keyup", (e) => {
+//   if (!e.target.value) {
+//     disableReset();
+//     peopleAmount = null;
+//   }
+//   if (
+//     e.target.value.match(/\d+\.?\d*/) &&
+//     !(
+//       e.target.value.match(/[a-zA-Z]/g) ||
+//       e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g)
+//     )
+//   ) {
+//     enableReset();
+//     parsePeople();
+//     console.log(`people: ${peopleAmount}`);
+//   }
+//   if (
+//     e.target.value.match(/[a-zA-Z]/g) ||
+//     e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g)
+//   ) {
+//     disableReset();
+//     peopleAmount = null;
+//   }
+// });
 
 custom.addEventListener("click", () => {
   clickedButton = null;
@@ -169,21 +176,21 @@ custom.addEventListener("click", () => {
   }
 });
 
-custom.addEventListener("keyup", (e) => {
-  if (!e.target.value && !clickedButton && !(bill.value && people.value)) {
-    disableReset();
-  }
-  if (e.target.value.match(/\d+\.?\d*/)) {
-    enableReset();
-    parseTip();
-  }
-  if (
-    e.target.value.match(/[a-zA-Z]/g) ||
-    e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
-  ) {
-    disableReset();
-  }
-});
+// custom.addEventListener("keyup", (e) => {
+//   if (!e.target.value && !clickedButton && !(bill.value && people.value)) {
+//     disableReset();
+//   }
+//   if (e.target.value.match(/\d+\.?\d*/)) {
+//     enableReset();
+//     parseTip();
+//   }
+//   if (
+//     e.target.value.match(/[a-zA-Z]/g) ||
+//     e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
+//   ) {
+//     disableReset();
+//   }
+// });
 
 for (let button of buttons) {
   button.addEventListener("click", (e) => {
@@ -218,3 +225,20 @@ document.addEventListener("keydown", (e) => {
   parseTip();
   calculate();
 });
+
+document.addEventListener('click', () => {
+  checkInputs();
+})
+
+document.addEventListener('keyup', (e) => {
+  if(e.target.id === 'bill') {
+    console.log('typing in bill')
+  }
+  if(e.target.id === 'custom') {
+    console.log('typing in custom tip')
+  }
+  if(e.target.id === 'people') {
+    console.log('typing in people')
+  }
+  checkInputs();
+})

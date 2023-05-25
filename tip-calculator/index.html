@@ -28,16 +28,20 @@
       <div class="calculator">
         <div class="calculator-section">
           <div class="category-heading">
-            <h2>Bill</h2>
+            <h2 class="calculator-heading">Bill</h2>
+            <div class="error-wrapper">
+              <h4 class="error-zero">Can't be zero</h4>
+              <h4 class="error-invalid hidden">Can only contain a decimal number</h4>
+            </div>
           </div>
           <div class="input-wrapper">
             <img src="./fem-src/images/icon-dollar.svg" alt="USD icon" class="icon">
-            <input type="text" id="bill" placeholder="0">
+            <input type="text" id="bill" placeholder="0" class="error-border">
           </div>
         </div>
         <div class="calculator-section">
           <div class="category-heading">
-            <h2>Select Tip %</h2>
+            <h2 class="calculator-heading">Select Tip %</h2>
           </div>
           <div class="button-grid">
             <button id="five-percent" value=".05">5%</button>
@@ -50,7 +54,11 @@
         </div>
         <div class="calculator-section">
           <div class="category-heading">
-            <h2>Number of People</h2>
+            <h2 class="calculator-heading">Number of People</h2>
+            <div class="error-wrapper">
+              <h4 class="error-zero">Can't be zero</h4>
+              <h4 class="error-invalid hidden">Can only contain a whole number</h4>
+            </div>
           </div>
           <div class="input-wrapper">
             <img src="./fem-src/images/icon-person.svg" alt="icon of a person" class="icon">
