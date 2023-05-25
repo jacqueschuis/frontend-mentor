@@ -108,6 +108,10 @@ h1 {
   color: hsl(16, 41%, 60%);
 }
 
+h4 {
+  margin: 0;
+}
+
 .input-wrapper{
   position: relative;
 }
@@ -117,6 +121,30 @@ h1 {
   left: 0;
   bottom: 0;
   transform: translate(100%, -75%);
+}
+
+input {
+  box-sizing: border-box;
+  padding: 0 20px;
+  background-color: hsl(189, 41%, 97%);
+  width: 100%;
+  min-height: 50px;
+  border-radius: 5px;
+  color: hsl(183, 100%, 15%);
+  font-size: 18pt;
+  text-align: end;
+}
+
+input:active,
+input:hover,
+input:focus {
+  border: 2px solid hsl(172, 67%, 45%);
+  caret-color: hsl(172, 67%, 45%);
+}
+
+input::placeholder {
+  color: hsl(184, 14%, 56%);
+  font-size: 20pt;
 }
 
 .button-grid {
@@ -153,6 +181,8 @@ button {
   color: hsl(183, 100%, 15%);
 }
 
+/* results side */
+
 .results {
   box-sizing: border-box;
   display: flex;
@@ -185,50 +215,6 @@ button {
   align-items: center;
 }
 
-.result {
-  color: hsl(172, 67%, 45%);
-  font-size: calc(24pt + (32 - 24) * ((100vw - 375px) / (1440 - 375)));
-  margin: 0;
-}
-
-
-
-
-
-#reset:focus {
-  background-color: hsl(185, 41%, 84%);
-}
-
-#reset {
-  transition: 0.15s;
-}
-
-input {
-  box-sizing: border-box;
-  padding: 0 20px;
-  background-color: hsl(189, 41%, 97%);
-  width: 100%;
-  min-height: 50px;
-  border-radius: 5px;
-  color: hsl(183, 100%, 15%);
-  font-size: 18pt;
-  text-align: end;
-}
-
-input:active,
-input:hover,
-input:focus {
-  border: 2px solid hsl(172, 67%, 45%);
-  caret-color: hsl(172, 67%, 45%);
-}
-
-input::placeholder {
-  color: hsl(184, 14%, 56%);
-  font-size: 20pt;
-}
-
-
-
 h3 {
   color: hsl(189, 41%, 97%);
   margin: 0;
@@ -241,9 +227,18 @@ p {
   font-size: 10pt;
 }
 
-
-h4 {
+.result {
+  color: hsl(172, 67%, 45%);
+  font-size: calc(24pt + (32 - 24) * ((100vw - 375px) / (1440 - 375)));
   margin: 0;
+}
+
+#reset {
+  transition: 0.15s;
+}
+
+#reset:focus {
+  background-color: hsl(185, 41%, 84%);
 }
 
 /* toggled styles */
