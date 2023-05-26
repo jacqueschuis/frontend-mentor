@@ -136,8 +136,8 @@ input {
 }
 
 input:active,
-input:hover,
-input:focus {
+input:hover
+ {
   border: 2px solid hsl(172, 67%, 45%);
   caret-color: hsl(172, 67%, 45%);
 }

@@ -27,6 +27,13 @@ const total = document.querySelector("#total-result");
 
 const reset = document.querySelector("#reset");
 
+// error message selectors
+
+const errorZeroBill = document.querySelector('#error-zero-bill');
+const errorInavildBill = document.querySelector('#error-invalid-bill');
+const errorZeroPeople = document.querySelector('#error-zero-people');
+const errorInavildPeople = document.querySelector('#error-invalid-people');
+
 // variables for handling button clicks
 
 let prevButton = null;
@@ -42,6 +49,11 @@ let netCost;
 let netTip;
 let netCostPC;
 let netTipPC;
+
+// error variables
+let isBillError = false;
+let isTipError = false;
+let isPeopleError = false;
 
 function disableReset() {
   reset.classList.add("inactive");
@@ -71,8 +83,18 @@ function zero() {
   netTip = null;
   netCostPC = null;
   netTipPC = null;
+  isBillError = false
+  isTipError = false
+  isPeopleError = false
   tip.innerHTML = "$0.00";
   total.innerHTML = "$0.00";
+  bill.classList.remove('error-border');
+  people.classList.remove('error-border');
+  custom.classList.remove('error-border');
+  errorInavildBill.classList.add('hidden');
+  errorInavildPeople.classList.add('hidden');
+  errorZeroBill.classList.add('hidden');
+  errorZeroPeople.classList.add('hidden');
 }
 
 function parseBill() {
@@ -92,20 +114,15 @@ function parseTip() {
 }
 
 function calculate() {
-  if (!(billAmount && tipAmount && peopleAmount)) {
-    return;
-  }
   netTip = Number(billAmount * tipAmount);
   netCost = Number(netTip + billAmount);
   netCostPC = Number(netCost / peopleAmount);
   netTipPC = Number(netTip / peopleAmount);
-  console.log(`tip amount per person: $${netTipPC}`);
-  console.log(`total amount per person: $${netCostPC}`);
 }
 
-function displayResults(obj) {
-  tip.innerHTML = obj.calculatedTip;
-  total.innerHTML = obj.calculatedTotal;
+function setResults() {
+  tip.innerHTML = netTipPC;
+  total.innerHTML = netCostPC;
 }
 
 function checkInputs() {
@@ -170,6 +187,7 @@ reset.addEventListener("click", () => {
 // });
 
 custom.addEventListener("click", () => {
+  prevButton = null;
   clickedButton = null;
   for (let button of buttons) {
     button.classList.remove("button-clicked");
@@ -194,6 +212,7 @@ custom.addEventListener("click", () => {
 
 for (let button of buttons) {
   button.addEventListener("click", (e) => {
+    isTipError = false;
     enableReset();
     e.target.classList.add("button-clicked");
     clickedButton = e.target;
@@ -231,14 +250,103 @@ document.addEventListener('click', () => {
 })
 
 document.addEventListener('keyup', (e) => {
-  if(e.target.id === 'bill') {
-    console.log('typing in bill')
-  }
-  if(e.target.id === 'custom') {
-    console.log('typing in custom tip')
-  }
-  if(e.target.id === 'people') {
-    console.log('typing in people')
-  }
+  // enable reset for any form activity
   checkInputs();
+
+  // bill input error handling
+  if(e.target.id === 'bill' && e.target.value === '0') {
+    bill.classList.add('error-border');
+    errorZeroBill.classList.remove('hidden');
+    billAmount = null;
+    isBillError = true;
+    tip.innerHTML = "$0.00";
+    total.innerHTML = "$0.00";
+  }
+  if(
+    e.target.id === 'bill' &&
+    (
+      e.target.value.match(/[a-zA-Z]/g) ||
+      e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
+    )
+  ) {
+    bill.classList.add('error-border')
+    errorInavildBill.classList.remove('hidden');
+    billAmount = null;
+    isBillError = true;
+    tip.innerHTML = "$0.00";
+    total.innerHTML = "$0.00";
+
+  }
+  if (e.target.id === 'bill' && !e.target.value) {
+    bill.classList.remove('error-border');
+    errorInavildBill.classList.add('hidden');
+    errorZeroBill.classList.add('hidden');
+    billAmount = null;
+    isBillError = false;
+    tip.innerHTML = "$0.00";
+    total.innerHTML = "$0.00";
+  }
+
+  // custom tip input error handling
+  if(e.target.id === 'custom' &&
+     (
+      e.target.value.match(/[a-zA-Z]/g) ||
+      e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g) ||
+      e.target.value === '0'
+     )) {
+    custom.classList.add('error-border');
+    tipAmount = null;
+    isTipError = true;
+  }
+  if(e.target.id === 'custom' && !e.target.value){
+    custom.classList.remove('error-border');
+    tipAmount = null;
+    isTipError = false;
+  }
+
+  // people input error handling
+  if(e.target.id === 'people' && e.target.value === "0") {
+    people.classList.add('error-border');
+    errorZeroPeople.classList.remove('hidden');
+    peopleAmount = null;
+    isPeopleError = true;
+    tip.innerHTML = "$0.00";
+    total.innerHTML = "$0.00";
+  }
+  if(
+    e.target.id === 'people' &&
+    (
+      e.target.value.match(/[a-zA-Z]/g) ||
+      e.target.value.match(/[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]/g)
+    )
+  ) {
+    people.classList.add('error-border')
+    errorInavildPeople.classList.remove('hidden');
+    peopleAmount = null;
+    isPeopleError = true;
+    tip.innerHTML = "$0.00";
+    total.innerHTML = "$0.00";
+  }
+  if (e.target.id === 'people' && !e.target.value) {
+    people.classList.remove('error-border');
+    errorInavildPeople.classList.add('hidden');
+    errorZeroPeople.classList.add('hidden');
+    peopleAmount = null;
+    isPeopleError = false;
+    tip.innerHTML = "$0.00";
+    total.innerHTML = "$0.00";
+  }
+
+  // parsing successful inputs
+  if(!isBillError) {parseBill()}
+  if(!isTipError) {parseTip()}
+  if(!isPeopleError) {parsePeople()}
+
+
+  // successful form handling
+  if (billAmount && tipAmount && peopleAmount) {
+    calculate();
+    setResults();
+  }
+  
 })
