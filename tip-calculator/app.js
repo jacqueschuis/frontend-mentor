@@ -116,13 +116,14 @@ function parseTip() {
 function calculate() {
   netTip = Number(billAmount * tipAmount);
   netCost = Number(netTip + billAmount);
-  netCostPC = Number(netCost / peopleAmount);
-  netTipPC = Number(netTip / peopleAmount);
+  netCostPC = Number(netCost / peopleAmount).toFixed(2);
+  netTipPC = Number(netTip / peopleAmount).toFixed(2);
+
 }
 
 function setResults() {
-  tip.innerHTML = netTipPC;
-  total.innerHTML = netCostPC;
+  tip.innerHTML = `$${netTipPC}`;
+  total.innerHTML = `$${netCostPC}`;
 }
 
 function checkInputs() {
@@ -136,55 +137,6 @@ reset.addEventListener("click", () => {
   zero();
 });
 
-// bill.addEventListener("keyup", (e) => {
-//   if (!e.target.value) {
-//     disableReset();
-//     billAmount = null;
-//   }
-//   if (
-//     e.target.value.match(/\d+\.?\d*/) &&
-//     !(
-//       e.target.value.match(/[a-zA-Z]/g) ||
-//       e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
-//     )
-//   ) {
-//     enableReset();
-//     parseBill();
-//     console.log(`bill total: $${billAmount}`);
-//   }
-//   if (
-//     e.target.value.match(/[a-zA-Z]/g) ||
-//     e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
-//   ) {
-//     disableReset();
-//     billAmount = null;
-//   }
-// });
-
-// people.addEventListener("keyup", (e) => {
-//   if (!e.target.value) {
-//     disableReset();
-//     peopleAmount = null;
-//   }
-//   if (
-//     e.target.value.match(/\d+\.?\d*/) &&
-//     !(
-//       e.target.value.match(/[a-zA-Z]/g) ||
-//       e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g)
-//     )
-//   ) {
-//     enableReset();
-//     parsePeople();
-//     console.log(`people: ${peopleAmount}`);
-//   }
-//   if (
-//     e.target.value.match(/[a-zA-Z]/g) ||
-//     e.target.value.match(/[-’/`~!#*$@_%+=,.^&(){}[\]|;:”<>?\\]/g)
-//   ) {
-//     disableReset();
-//     peopleAmount = null;
-//   }
-// });
 
 custom.addEventListener("click", () => {
   prevButton = null;
@@ -192,23 +144,10 @@ custom.addEventListener("click", () => {
   for (let button of buttons) {
     button.classList.remove("button-clicked");
   }
+  tipAmount = null
+  tip.innerHTML = "$0.00";
+    total.innerHTML = "$0.00";
 });
-
-// custom.addEventListener("keyup", (e) => {
-//   if (!e.target.value && !clickedButton && !(bill.value && people.value)) {
-//     disableReset();
-//   }
-//   if (e.target.value.match(/\d+\.?\d*/)) {
-//     enableReset();
-//     parseTip();
-//   }
-//   if (
-//     e.target.value.match(/[a-zA-Z]/g) ||
-//     e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g)
-//   ) {
-//     disableReset();
-//   }
-// });
 
 for (let button of buttons) {
   button.addEventListener("click", (e) => {
@@ -217,6 +156,7 @@ for (let button of buttons) {
     e.target.classList.add("button-clicked");
     clickedButton = e.target;
     custom.value = "";
+    parseTip();
 
     if (prevButton !== null) {
       prevButton.classList.remove("button-clicked");
@@ -236,17 +176,20 @@ widget.addEventListener("click", (e) => {
   }
 });
 
-// development check
-document.addEventListener("keydown", (e) => {
-  if (e.key !== "Enter") {
-    return;
-  }
-  parseTip();
-  calculate();
-});
-
 document.addEventListener('click', () => {
   checkInputs();
+
+  // parsing successful inputs
+  if(!isBillError) {parseBill()}
+  if(!isTipError) {parseTip()}
+  if(!isPeopleError) {parsePeople()}
+
+
+  // successful form handling
+  if (billAmount && tipAmount && peopleAmount) {
+    calculate();
+    setResults();
+  }
 })
 
 document.addEventListener('keyup', (e) => {
@@ -338,6 +281,33 @@ document.addEventListener('keyup', (e) => {
   }
 
   // parsing successful inputs
+  if(
+    e.target.id === 'bill' &&
+    !(
+      e.target.value.match(/[a-zA-Z]/g) ||
+      e.target.value.match(/[-’/`~!#*$@_%+=,^&(){}[\]|;:”<>?\\]/g) ||
+      e.target.value === '0'
+    )
+  ) {
+    isBillError = false;
+    errorInavildBill.classList.add('hidden');
+    errorZeroBill.classList.add('hidden');
+    bill.classList.remove('error-border')
+  }
+  
+  if(
+    e.target.id === 'people' &&
+    !(
+      e.target.value.match(/[a-zA-Z]/g) ||
+      e.target.value.match(/[-’/`~!#*$@_%+=.,^&(){}[\]|;:”<>?\\]/g) ||
+      e.target.value === '0'
+    )
+  ) {
+    isPeopleError = false;
+    errorInavildPeople.classList.add('hidden');
+    errorZeroPeople.classList.add('hidden');
+    people.classList.remove('error-border')
+  }
   if(!isBillError) {parseBill()}
   if(!isTipError) {parseTip()}
   if(!isPeopleError) {parsePeople()}
