@@ -24,7 +24,7 @@
 
 ## Tip Calculator
 
-![](./tip-calculator/screenshot.png)
+![]()
 
 - [Live Site](https://frontend-mentor-tip-calculator-omega.vercel.app/)
 - [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/responsive-tip-calculator-with-vanilla-js-and-css-ziYZ3zbj_m)
