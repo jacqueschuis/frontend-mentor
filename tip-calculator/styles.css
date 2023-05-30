@@ -34,7 +34,7 @@ body {
 
 /* widget logo */
 header {
-  margin: 100px auto 50px auto;
+  margin: 150px auto 80px auto;
   width: fit-content;
   height: fit-content;
 }
@@ -69,8 +69,6 @@ header {
 .widget-content {
   display: flex;
   flex-wrap: wrap;
-  height: fit-content;
-  width: 100%;
   gap: 35px;
   align-items: stretch;
   justify-content: stretch;
