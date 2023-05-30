@@ -22,10 +22,10 @@
     <p class="head">tter</p>
   </header>
 
-  <div class="widget">
+  <main class="widget">
     <div class="widget-content">
-      <div class="calculator">
-        <div class="calculator-section">
+      <aside class="calculator">
+        <section class="calculator-section">
           <div class="category-heading">
             <h2 class="calculator-heading">Bill</h2>
             <div class="error-wrapper">
@@ -33,25 +33,25 @@
               <h4 id="error-invalid-bill" class="error-invalid hidden">Must be a decimal number</h4>
             </div>
           </div>
-          <div class="input-wrapper">
+          <section class="input-wrapper">
             <img src="./fem-src/images/icon-dollar.svg" alt="USD icon" class="icon">
             <input type="text" id="bill" placeholder="0">
-          </div>
-        </div>
-        <div class="calculator-section">
+          </section>
+        </section>
+        <section class="calculator-section">
           <div class="category-heading">
             <h2 class="calculator-heading">Select Tip %</h2>
           </div>
-          <div class="button-grid">
+          <nav class="button-grid">
             <button id="five-percent" value=".05">5%</button>
             <button id="ten-percent" value=".1">10%</button>
             <button id="fifteen-percent" value=".15">15%</button>
             <button id="twenty-five-percent" value=".25">25%</button>
             <button id="fifty-percent" value=".5">50%</button>
             <input type="text" placeholder="Custom" id="custom">
-          </div>
-        </div>
-        <div class="calculator-section">
+          </nav>
+        </section>
+        <section class="calculator-section">
           <div class="category-heading">
             <h2 class="calculator-heading">Number of People</h2>
             <div class="error-wrapper">
@@ -59,13 +59,13 @@
               <h4 id="error-invalid-people" class="error-invalid hidden">Must be an integer</h4>
             </div>
           </div>
-          <div class="input-wrapper">
+          <section class="input-wrapper">
             <img src="./fem-src/images/icon-person.svg" alt="icon of a person" class="icon">
             <input type="text" id="people" placeholder="0">
-          </div>
-        </div>
-      </div>
-      <div class="results">
+          </section>
+        </section>
+      </aside>
+      <aside class="results">
         <div class="calculated-results">
           <div class="tip-amount">
             <div class="text-block">
@@ -83,9 +83,9 @@
           </div>
         </div>
         <button id="reset" disabled class="inactive">RESET</button>
-      </div>
+      </aside>
     </div>
-  </div>
+  </main>
 </body>
 
 <script src="./app.js"></script>
