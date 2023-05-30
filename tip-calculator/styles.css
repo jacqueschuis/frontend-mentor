@@ -39,6 +39,11 @@ header {
   height: fit-content;
 }
 
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
 .head {
   color: hsl(186, 14%, 43%);
   text-transform: uppercase;
