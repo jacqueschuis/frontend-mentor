@@ -34,12 +34,12 @@ body {
 
 /* widget logo */
 header {
-  margin: 160px auto 90px auto;
+  margin: 100px auto 50px auto;
   width: 103px;
   height: fit-content;
 }
 
-h1 {
+.head {
   color: hsl(186, 14%, 43%);
   text-transform: uppercase;
   text-align: justify;
