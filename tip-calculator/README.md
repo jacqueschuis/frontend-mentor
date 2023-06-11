@@ -70,5 +70,5 @@ From this project, I will definitely continue using classes for error handling i
 
 ## Author
 
-- Website - [Jacques Pariseau](https://www.your-site.com)
+- Website - [Jacques Pariseau](https://www.j-par.com/)
 - Frontend Mentor - [@jacqueschuis](https://www.frontendmentor.io/profile/jacqueschuis)

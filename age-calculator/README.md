@@ -1,6 +1,6 @@
 # Frontend Mentor - Age calculator app solution
 
-This is a solution to the [Age calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Age calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -13,7 +13,6 @@ This is a solution to the [Age calculator app challenge on Frontend Mentor](http
   - [What I learned](#what-i-learned)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-
 
 ## Overview
 
@@ -59,6 +58,7 @@ I have gotten very accustomed to using Bootstrap as an easy way of styling every
   width: calc(275px + (550 - 275) * ((100vw - 375px) / (1440 - 375)));
 }
 ```
+
 I also tried to pull the logic out of event handlers whenever possible and simplify different aspects into their own individual functions. I'm particularly happy with how I handled the validation:
 
 ```js
@@ -66,33 +66,67 @@ function validateForm() {
   const day = dayInput.value;
   const month = monthInput.value;
   const year = yearInput.value;
-  
+
   let errors = [];
-  
-  if (!day) {errors.push('day-empty');}
-  if (! month) {errors.push('month-empty')}
-  if (!year) {errors.push('year-empty')}
-  if (!errors.includes('day-empty') && day > 31 || day < 0) {errors.push('day-invalid')}
-  if (!errors.includes('month-empty') && month > 12 || month < 0) {errors.push('month-invalid')}
-  if (!errors.includes('day-empty') && day.toString().length !== 2 && (!(errors.includes('day-invalid')))) {
-    errors.push('day-invalid');
+
+  if (!day) {
+    errors.push("day-empty");
   }
-  if (!errors.includes('month-empty') && month.toString().length !== 2 && (!(errors.includes('month-invalid')))) {
-    errors.push('month-invalid')
+  if (!month) {
+    errors.push("month-empty");
   }
-  if (!errors.includes('year-empty') && year.toString().length !== 4 && (!(errors.includes('year-invalid')))) {
-    errors.push('year-invalid')
+  if (!year) {
+    errors.push("year-empty");
   }
-  if (!errors.includes('day-empty') && isNaN(day) && (!(errors.includes('day-invalid')))){
-    errors.push('day-invalid');
+  if ((!errors.includes("day-empty") && day > 31) || day < 0) {
+    errors.push("day-invalid");
   }
-  if (!errors.includes('month-empty') && isNaN(month) && (!(errors.includes('month-invalid')))){
-    errors.push('month-invalid');
+  if ((!errors.includes("month-empty") && month > 12) || month < 0) {
+    errors.push("month-invalid");
   }
-  if (!errors.includes('year-empty') && isNaN(year) && (!(errors.includes('year-invalid')))){
-    errors.push('year-invalid')
+  if (
+    !errors.includes("day-empty") &&
+    day.toString().length !== 2 &&
+    !errors.includes("day-invalid")
+  ) {
+    errors.push("day-invalid");
   }
- return errors
+  if (
+    !errors.includes("month-empty") &&
+    month.toString().length !== 2 &&
+    !errors.includes("month-invalid")
+  ) {
+    errors.push("month-invalid");
+  }
+  if (
+    !errors.includes("year-empty") &&
+    year.toString().length !== 4 &&
+    !errors.includes("year-invalid")
+  ) {
+    errors.push("year-invalid");
+  }
+  if (
+    !errors.includes("day-empty") &&
+    isNaN(day) &&
+    !errors.includes("day-invalid")
+  ) {
+    errors.push("day-invalid");
+  }
+  if (
+    !errors.includes("month-empty") &&
+    isNaN(month) &&
+    !errors.includes("month-invalid")
+  ) {
+    errors.push("month-invalid");
+  }
+  if (
+    !errors.includes("year-empty") &&
+    isNaN(year) &&
+    !errors.includes("year-invalid")
+  ) {
+    errors.push("year-invalid");
+  }
+  return errors;
 }
 ```
 
@@ -102,6 +136,5 @@ function validateForm() {
 
 ## Author
 
-- Website - [Jacques Pariseau](https://www.your-site.com)
+- Website - [Jacques Pariseau](https://www.j-par.com/)
 - Frontend Mentor - [@jacqueschuis](https://www.frontendmentor.io/profile/jacqueschuis)
-

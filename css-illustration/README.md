@@ -1,6 +1,6 @@
 # Frontend Mentor - Chat App CSS Illustration solution
 
-This is a solution to the [Chat app CSS illustration challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/chat-app-css-illustration-O5auMkFqY). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Chat app CSS illustration challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/chat-app-css-illustration-O5auMkFqY). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -14,7 +14,6 @@ This is a solution to the [Chat app CSS illustration challenge on Frontend Mento
   - [Continued development](#moving-forward)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-
 
 ## Overview
 
@@ -48,7 +47,7 @@ Users should be able to:
 
 This project was an exercise to test my CSS skills. The only assets provided by Frontend Mentor were the user profile picture and the three images used in the UI design on the screen. Every other element is created entirely with custom CSS.
 
-I had to be sure to make my code very clear and clean to read, and with so many different rules in my CSS (32 different classes), I had to be very deliberate with my naming conventions so as not to cause confusion. 
+I had to be sure to make my code very clear and clean to read, and with so many different rules in my CSS (32 different classes), I had to be very deliberate with my naming conventions so as not to cause confusion.
 
 ### Moving forward
 
@@ -64,5 +63,5 @@ This project also solidified my confidence in translating design files into func
 
 ## Author
 
-- Website - [Jacques Pariseau](https://www.your-site.com)
+- Website - [Jacques Pariseau](https://www.j-par.com/)
 - Frontend Mentor - [@jacqueschuis](https://www.frontendmentor.io/profile/jacqueschuis)
