@@ -34,18 +34,25 @@ body {
 
 /* widget logo */
 header {
-  margin: 160px auto 90px auto;
-  width: 103px;
+  margin: 150px auto 80px auto;
+  width: fit-content;
   height: fit-content;
 }
 
 h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.head {
   color: hsl(186, 14%, 43%);
   text-transform: uppercase;
   text-align: justify;
   overflow-wrap: break-word;
   font-size: 18pt;
   margin: 0;
+  letter-spacing: .5rem;
+  display: block;
 }
 
 /* widget styles */
@@ -60,7 +67,7 @@ h1 {
   justify-content: stretch;
   align-items: stretch;
   border-radius: 30px;
-  padding: 40px;
+  padding: 35px;
   box-sizing: border-box;
   box-shadow: 0 0px 30px hsl(185, 41%, 70%);
 }
@@ -68,8 +75,6 @@ h1 {
 .widget-content {
   display: flex;
   flex-wrap: wrap;
-  height: fit-content;
-  width: 100%;
   gap: 35px;
   align-items: stretch;
   justify-content: stretch;
@@ -144,7 +149,7 @@ input:hover
 
 input::placeholder {
   color: hsl(184, 14%, 56%);
-  font-size: 20pt;
+  font-size: 16pt;
 }
 
 .button-grid {
@@ -193,8 +198,8 @@ button {
   width: 50%;
   gap: 35px;
   background-color: hsl(183, 100%, 15%);
-  border-radius: 20px;
-  padding: 50px;
+  border-radius: 15px;
+  padding: 40px;
 }
 
 
